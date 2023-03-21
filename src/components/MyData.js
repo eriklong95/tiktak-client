@@ -1,10 +1,11 @@
 import UserData from "./data/UserData";
 
-function MyData() {
+function MyData(props) {
+    const user = props.user;
     return (
         <div>
-            <p>A lot of data</p>
-            <UserData />
+            <p>Data about me</p>
+            <UserData username={user.username} rank={user.rank}/>
         </div>
     );
 }

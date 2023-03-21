@@ -1,20 +1,15 @@
 import CreateGame from './games/CreateGame';
 import Game from './games/Game';
 
-function MyGames() {
+function MyGames(props) {
     return (
-        <div>
-            <p>A lot of games!</p>
+        <>
+            <p>My games</p>
             <ul>
-                <li>
-                    <Game />
-                </li>
-                <li>
-                    <Game />
-                </li>
+                {props.games.map(g => <li>{Game(g)}</li>)}
             </ul>
             <CreateGame />
-        </div>
+        </>
     );
 }
 

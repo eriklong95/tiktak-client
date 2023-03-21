@@ -1,5 +1,5 @@
-function UserData() {
-    return <p>Username: andrew1990, Rank: 10</p>
+function UserData(props) {
+    return <p>Username: {props.username}, Rank: {props.rank}</p>
 }
 
 export default UserData;
