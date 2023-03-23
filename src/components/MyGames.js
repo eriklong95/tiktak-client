@@ -6,7 +6,7 @@ function MyGames(props) {
         <>
             <p>My games</p>
             <ul>
-                {props.games.map(g => <li>{Game(g)}</li>)}
+                {props.games.map(g => <li key={g._id}><Game id={g._id} playerA={g.playerA} playerB={g.playerB} /></li>)}
             </ul>
             <CreateGame />
         </>
