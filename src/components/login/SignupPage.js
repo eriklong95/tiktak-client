@@ -9,7 +9,8 @@ export default function SignupPage(props) {
         // ask the server to create user with username='name'
         console.log('Creating user...');
         console.log(`Successfully created user ${name}`);
-        setStatus('success');
+        setUsername('');
+        setStatus('failure');
     }
 
     if (status === 'success') {
@@ -24,7 +25,7 @@ export default function SignupPage(props) {
             <>
                 <p>Choose a username</p>
                 <form onSubmit={e => createUser(e, username)}>
-                    <input value={username} onChange={e => setUsername(e.target.value)}/>
+                    <input value={username} onChange={e => {setUsername(e.target.value); setStatus('signingUp');}} />
                     <button>Sign up</button>
                     { status === 'failure' && <p>Sign-up failed. Try again.</p> }
                 </form>
