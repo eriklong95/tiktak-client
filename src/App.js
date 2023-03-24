@@ -1,14 +1,13 @@
 import { useState } from "react";
-import MyData from "./components/MyData";
-import MyGames from "./components/MyGames";
-import LoginPage from "./components/LoginPage";
+import Lobby from "./components/login/Lobby";
 import MyPage from "./components/MyPage";
 
-function App(props) {
+function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
 
-    function handleLoginAttempt(username) {
+    async function handleLoginAttempt(username) {
+        // should ask the server if user is known
         if (username === 'demouser') {
             setUser({ username, rank: 0 });
             setLoggedIn(true);
@@ -27,7 +26,7 @@ function App(props) {
         );
     } else {
         return (
-            <LoginPage onLoginAttempt={handleLoginAttempt} />
+            <Lobby onLoginAttempt={handleLoginAttempt} />
         )
     }
 

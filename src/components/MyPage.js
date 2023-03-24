@@ -5,13 +5,13 @@ import LogoutButton from "./LogoutButton";
 const GAMES = [
     {
         _id: "0000",
-        playerA: "andrew1990",
-        playerB: "boris1991"
+        playerA: "demouser",
+        playerB: "otherUser"
     },
     {
         _id: "1111",
-        playerA: "andrew1990",
-        playerB: "charlie1989"
+        playerA: "demouser",
+        playerB: "yetAnotherUser"
     }
 ]
 

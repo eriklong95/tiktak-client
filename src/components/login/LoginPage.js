@@ -15,6 +15,7 @@ export default function LoginPage(props) {
                 <textarea value={textInput} onChange={handleTextareaChange}/>
                 <button>Login</button>
             </form>
+            <p>Not on tiktak yet?<button onClick={props.onClickSignup}>Sign up</button></p>
         </>
     );
 }
