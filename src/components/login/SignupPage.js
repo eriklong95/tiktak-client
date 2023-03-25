@@ -4,7 +4,7 @@ import { stubFetch } from "../../util/stub";
 export default function SignupPage(props) {
     const [username, setUsername] = useState('');
     const [status, setStatus] = useState('signingUp'); // possible values are 'signingUp', 'success', 'failure'
-    const [message, setMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     function createUser(event, name) {
         event.preventDefault();
@@ -20,17 +20,16 @@ export default function SignupPage(props) {
             } else if (response.status === 403){
                 setUsername('');
                 setStatus('failure');
-                setMessage('Username already taken');
+                setErrorMessage('Username already taken');
             } else {
                 setUsername('');
                 setStatus('failure');
-                setMessage('Unknown error');
+                setErrorMessage('Unknown error');
             }
         }).catch(error => {
             console.log(error);
-            alert(error);
             setStatus('failure');
-            setMessage('Network error');
+            setErrorMessage(error.message);
         });
     }
 
@@ -51,7 +50,7 @@ export default function SignupPage(props) {
                 </form>
                 <p>Already on tiktak?<button onClick={props.onClickLogin}>Log in</button></p>
                 <dialog open={status === 'failure'}>
-                    <p>{message}</p>
+                    <p>{errorMessage}</p>
                     <button onClick={() => setStatus('signingUp')}>OK</button>
                 </dialog>
             </>

@@ -3,8 +3,10 @@ import { stubFetch } from "../../util/stub";
 
 export default function LoginPage(props) {
     const [textInput, setTextInput] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorDialogOpen, setErrorDialogOpen] = useState(false);
 
-    function handleLoginAttempt(event, username, setLoggedIn) {
+    function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
         const request = new Request(`http://localhost:5000/users/{${username}}`, {
             method: 'GET',
@@ -15,16 +17,18 @@ export default function LoginPage(props) {
 
         stubFetch(request).then(response => {
             if (response.ok) {
-                setUser(username);
+                setUser(username); // maybe pass response body instead?
                 setLoggedIn(true);
             } else {
-                alert('Login failed');
                 setLoggedIn(false);
                 setUser('');
+                setErrorMessage('Login failed');
+                setErrorDialogOpen(true);
             }
         }).catch(error => {
             console.log(error);
-            alert(error);
+            setErrorMessage(error.message);
+            setErrorDialogOpen(true);
         });
     }
 
@@ -32,11 +36,15 @@ export default function LoginPage(props) {
         <>
             <h1>Welcome to tiktak!</h1>
             <p>Log in to start playing.</p>
-            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn)}>
-                <input value={textInput} onChange={e => setTextInput(e.target.value)}/>
+            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
+                <input value={textInput} onChange={e => setTextInput(e.target.value)} />
                 <button>Login</button>
             </form>
             <p>Not on tiktak yet?<button onClick={props.onClickSignup}>Sign up</button></p>
+            <dialog open={errorDialogOpen}>
+                <p>{errorMessage}</p>
+                <button onClick={() => setErrorDialogOpen(false)}>OK</button>
+            </dialog>
         </>
     );
 }
