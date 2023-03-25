@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { stubFetch } from "../../util/stub";
 
 export default function SignupPage(props) {
     const [username, setUsername] = useState('');
@@ -6,11 +7,23 @@ export default function SignupPage(props) {
 
     function createUser(e, name) {
         e.preventDefault();
-        // ask the server to create user with username='name'
-        console.log('Creating user...');
-        console.log(`Successfully created user ${name}`);
-        setUsername('');
-        setStatus('failure');
+        stubFetch(new Request(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: name
+        })).then(response => {
+            if (response.ok) {
+                setStatus('success');
+            } else {
+                setStatus('failure');
+            }
+        }).catch(error => {
+            console.log(error);
+            alert(error);
+            setStatus('failure');
+        });
     }
 
     if (status === 'success') {
