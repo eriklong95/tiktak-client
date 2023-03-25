@@ -5,43 +5,15 @@ import { stubFetch } from "./util/stub";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
-
-    function handleLoginAttempt(username) {
-        // set up request object
-        const request = new Request(`http://localhost:5000/users/{${username}}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-            }
-        })
-
-        stubFetch(request).then(response => {
-            if (response.ok) {
-                setUser(username);
-                setLoggedIn(true);
-            } else {
-                alert('Login failed');
-                setLoggedIn(false);
-                setUser('');
-            }
-        }).catch(error => {
-            console.log(error);
-            alert(error);
-        });
-    }
-
-    function handleLogout() {
-        setLoggedIn(false);
-    }
+    const [user, setUser] = useState(null); 
 
     if (loggedIn) {
         return (
-            <MyPage user={user} onLogout={handleLogout} />
+            <MyPage user={user} logout={() => setLoggedIn(false)} />
         );
     } else {
         return (
-            <Lobby onLoginAttempt={handleLoginAttempt} />
+            <Lobby setLoggedIn={setLoggedIn} setUser={setUser} />
         )
     }
 

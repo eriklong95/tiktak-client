@@ -3,12 +3,11 @@ import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 
 export default function Lobby(props) {
-    // status can be 'loggingIn', 'signingUp'
-    const [status, setStatus] = useState('loggingIn');
+    const [status, setStatus] = useState('loggingIn'); // possible values are 'loggingIn', 'signingUp'
 
     if (status === 'loggingIn') {
         return (
-            <LoginPage onLoginAttempt={props.onLoginAttempt} onClickSignup={() => setStatus('signingUp')} />
+            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} />
         );
     } else if (status === 'signingUp') {
         return (

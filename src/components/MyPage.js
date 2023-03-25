@@ -21,7 +21,7 @@ export default function MyPage(props) {
         <div>
             <MyData user={props.user}/>
             <MyGames games={GAMES} />
-            <LogoutButton onLogout={props.onLogout} />
+            <LogoutButton onLogout={props.logout} />
         </div>
     );
 }
