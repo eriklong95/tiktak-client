@@ -1,6 +1,6 @@
 import { useState } from "react";
 import App from "./App";
-import ServerConnectionConfigPanel from "./ServerConnectionConfigPanel";
+import ServerConnectionConfig from "./ServerConnectionConfig";
 import StubbingDialog from "./StubbingDialog";
 
 export default function AppContainer() {
@@ -9,7 +9,7 @@ export default function AppContainer() {
     return (
         <>
             <App serverConnection={serverConnection}/>
-            <ServerConnectionConfigPanel setServerConnection={setServerConnection} />
+            <ServerConnectionConfig setServerConnection={setServerConnection} />
             <StubbingDialog />
         </>
     )

@@ -11,7 +11,7 @@ export default function Lobby(props) {
         );
     } else if (status === 'signingUp') {
         return (
-            <SignupPage onClickLogin={() => setStatus('loggingIn')} />
+            <SignupPage onClickLogin={() => setStatus('loggingIn')} serverConnection={props.serverConnection} />
         );
     }
 }
