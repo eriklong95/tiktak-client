@@ -2,9 +2,9 @@ import { useState } from "react";
 import Lobby from "./components/login/Lobby";
 import MyPage from "./components/MyPage";
 
-function App() {
+function App(props) {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState(null); 
+    const [user, setUser] = useState(null);
 
     if (loggedIn) {
         return (
