@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Lobby from "./components/login/Lobby";
 import MyPage from "./components/MyPage";
-import { stubFetch } from "./util/stub";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
