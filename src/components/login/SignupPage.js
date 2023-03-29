@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { stubFetch } from "../../util/stub";
 
 export default function SignupPage(props) {
     const [username, setUsername] = useState('');

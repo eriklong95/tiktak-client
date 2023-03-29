@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { stubFetch } from "../../util/stub";
 
 export default function LoginPage(props) {
     const [textInput, setTextInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [errorDialogOpen, setErrorDialogOpen] = useState(false);
 
-    function handleLoginAttempt(event, username, setLoggedIn, setUser) {
+    function handleLoginAttempt(event, username, setLoggedIn, setUser, serverConnection) {
         event.preventDefault();
         const request = new Request(`http://localhost:5000/users/{${username}}`, {
             method: 'GET',
@@ -15,7 +14,7 @@ export default function LoginPage(props) {
             }
         })
 
-        stubFetch(request).then(response => {
+        serverConnection.call(request).then(response => {
             if (response.ok) {
                 setUser(username); // maybe pass response body instead?
                 setLoggedIn(true);
@@ -36,7 +35,7 @@ export default function LoginPage(props) {
         <>
             <h1>Welcome to tiktak!</h1>
             <p>Log in to start playing.</p>
-            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
+            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser, props.serverConnection)}>
                 <input value={textInput} onChange={e => setTextInput(e.target.value)} />
                 <button>Login</button>
             </form>
