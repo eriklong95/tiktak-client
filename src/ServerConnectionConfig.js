@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { ServerConnection } from "./AppContainer";
 
 export default function ServerConnectionConfig(props) {
     const [host, setHost] = useState('');
@@ -7,7 +8,9 @@ export default function ServerConnectionConfig(props) {
 
     function handleOk() {
         setDialogOpen(false);
-        props.setServerConnection(new ServerConnection(host, stubResponses));
+        props.setServerConnection(previous => {
+            return {...previous, host: host, stubResponses: stubResponses};
+        });
     }
 
     return (
@@ -24,26 +27,4 @@ export default function ServerConnectionConfig(props) {
             </dialog>
         </>
     );
-}
-
-class ServerConnection {
-    constructor(host, stubResponses) {
-        this.host = host;
-        this.stubResponses = stubResponses;
-    }
-
-    // expects Fetch API Request, returns Promise of Fetch API response
-    call(request) {
-        if (this.stubResponses) {
-            return stubFetch(request)
-        } else {
-            return fetch(request);
-        }
-    }
-}
-
-function stubFetch(request) {
-    return new Promise((resolve, reject) => {
-        reject('Network error');
-    })
 }
