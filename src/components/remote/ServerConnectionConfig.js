@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { ServerConnection } from "./AppContainer";
 
 export default function ServerConnectionConfig(props) {
     const [host, setHost] = useState('');
@@ -7,10 +6,11 @@ export default function ServerConnectionConfig(props) {
     const [dialogOpen, setDialogOpen] = useState(false);
 
     function handleOk() {
-        setDialogOpen(false);
         props.setServerConnection(previous => {
             return {...previous, host: host, stubResponses: stubResponses};
         });
+
+        setDialogOpen(false);
     }
 
     return (

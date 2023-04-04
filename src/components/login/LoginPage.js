@@ -5,7 +5,7 @@ export default function LoginPage(props) {
     const [errorMessage, setErrorMessage] = useState('');
     const [errorDialogOpen, setErrorDialogOpen] = useState(false);
 
-    function handleLoginAttempt(event, username, setLoggedIn, setUser, serverConnection) {
+    async function handleLoginAttempt(event, username, setLoggedIn, setUser, serverConnection) {
         event.preventDefault();
         const request = new Request(`http://localhost:5000/users/{${username}}`, {
             method: 'GET',
@@ -29,7 +29,9 @@ export default function LoginPage(props) {
             setErrorMessage(error.message);
             setErrorDialogOpen(true);
         });
+
     }
+
 
     return (
         <>

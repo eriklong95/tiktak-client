@@ -1,43 +1,35 @@
 import { useState } from "react";
 import App from "./App";
-import ServerConnectionConfig from "./ServerConnectionConfig";
-import StubbingDialog from "./StubbingDialog";
+import ServerConnectionController from "./components/remote/ServerConnectionController";
 
-export default function AppContainer() {
-    const [stubbingDialogOpen, setStubbingDialogOpen] = useState(false);
-    const [currentRequest, setCurrentRequest] = useState({url: "something"});
-
-    function stubFetch(request) {
-        setStubbingDialogOpen(true);
-        return new Promise((resolve, reject) => {
-            reject('Network error');
-        });
-    }
+function AppContainer() {
+    const [stubResponses, setStubResponses] = useState([0, 0, 0]);
 
     const initialServerConnection = {
         host: 'http://localhost:5000',
         stubResponses: false,
-    
+        
         // expects Fetch API Request, returns Promise of Fetch API response
         call: function (request) {
-            setCurrentRequest(request);
             if (this.stubResponses) {
-                return stubFetch(request)
+                // find the appropriate stub response in the list stubResponses and return it
+                return new Promise((resolve, reject) => {
+                    resolve(new Response('body', { status: 404 }));
+                });
             } else {
                 return fetch(request);
             }
-        },
-    
+        }
+        
     };
-
     const [serverConnection, setServerConnection] = useState(initialServerConnection);
 
     return (
         <>
-            <App serverConnection={serverConnection}/>
-            <ServerConnectionConfig setServerConnection={setServerConnection} />
-            <StubbingDialog open={stubbingDialogOpen} setOpen={setStubbingDialogOpen} request={currentRequest}/>
+            <App serverConnection={serverConnection} />
+            <ServerConnectionController setServerConnection={setServerConnection} stubResponses={stubResponses} setStubResponses={setStubResponses} />
         </>
     )
 }
 
+export default AppContainer;
