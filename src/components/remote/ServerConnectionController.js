@@ -5,7 +5,7 @@ function ServerConnectionController(props) {
     return (
         <>
             <ServerConnectionConfig setServerConnection={props.setServerConnection} />
-            <StubResponsesConfig stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} />
+            { props.serverConnection.withStubs && (<StubResponsesConfig stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} />) }
         </>
     )
 }
