@@ -4,31 +4,18 @@ import GameListItem from './games/GameListItem';
 
 
 function MyGames(props) {
-    const GAMES = [
-        {
-            _id: 'dsj0h2h3d',
-            playerA: props.user,
-            playerB: 'otherUser'
-        },
-        {
-            _id: 'sd9asuey23',
-            playerA: props.user,
-            playerB: 'stranger'
-        }
-    ]
-    const [games, setGames] = useState(GAMES);
+    const GAME_IDS = ['ashjd3dgiu', 'adhohasd'];
 
-    function addGame(game) {
-        setGames(previous => [...previous, game]);
-    }
+    // gameIds should be obtained by syncing with server
+    const [gameIds, setGameIds] = useState(GAME_IDS);
 
     return (
         <>
             <p>My games</p>
             <ul>
-                { games.map(g => <GameListItem id={g._id} playerA={g.playerA} playerB={g.playerB} key={g._id}/>) }
+                { gameIds.map(i => <GameListItem gameId={i} key={i}/>) }
             </ul>
-            <CreateGame user={props.user} addGame={addGame} />
+            <CreateGame user={props.user} />
         </>
     );
 }
