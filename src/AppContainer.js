@@ -18,7 +18,7 @@ const OTHER_STUB_RESPONSE = {
 function AppContainer() {
     const [stubResponses, setStubResponses] = useState([DUMMY_STUB_RESPONSE, OTHER_STUB_RESPONSE]);
     const [host, setHost] = useState('http://localhost:5000');
-    const [withStubs, setWithStubs] = useState(true);
+    const [withStubs, setWithStubs] = useState(false);
 
     function callServer(request) {
         if (withStubs) {
