@@ -34,11 +34,10 @@ function StubResponseListItem(props) {
                 <label>
                     Response: <input type="text" value={status} readOnly/>
                 </label>
-
                 <button onClick={handleEdit}>Edit</button>
-
                 <button onClick={() => handleCopy(url, status)}>Copy</button>
                 <button onClick={handleDelete}>Delete</button>
+                { props.marked && <label>this</label> }
             </form>
         </li>
     );

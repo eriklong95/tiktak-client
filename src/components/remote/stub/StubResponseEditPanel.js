@@ -32,6 +32,7 @@ function StubResponseEditPanel(props) {
     function handleDone(event, stubId, method, url, status) {
         event.preventDefault();
         handleApply(event, stubId, method, url, status);
+        props.closeDialog();
     }
 
     return (
