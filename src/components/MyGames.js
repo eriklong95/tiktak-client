@@ -1,14 +1,34 @@
+import { useState } from 'react';
 import CreateGame from './games/CreateGame';
-import Game from './games/Game';
+import GameListItem from './games/GameListItem';
+
 
 function MyGames(props) {
+    const GAMES = [
+        {
+            _id: 'dsj0h2h3d',
+            playerA: props.user,
+            playerB: 'otherUser'
+        },
+        {
+            _id: 'sd9asuey23',
+            playerA: props.user,
+            playerB: 'stranger'
+        }
+    ]
+    const [games, setGames] = useState(GAMES);
+
+    function addGame(game) {
+        setGames(previous => [...previous, game]);
+    }
+
     return (
         <>
             <p>My games</p>
             <ul>
-                { props.games.map(g => <li key={g._id}><Game id={g._id} playerA={g.playerA} playerB={g.playerB} /></li>) }
+                { games.map(g => <GameListItem id={g._id} playerA={g.playerA} playerB={g.playerB} key={g._id}/>) }
             </ul>
-            <CreateGame />
+            <CreateGame user={props.user} addGame={addGame} />
         </>
     );
 }
