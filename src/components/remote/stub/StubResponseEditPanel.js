@@ -41,7 +41,17 @@ function StubResponseEditPanel(props) {
             <form onSubmit={e => handleApply(e, props.editId, method, url, status)}>
                 <label>
                     Request:
-                    <input type="text" value={method} onChange={e => setMethod(e.target.value)} />
+                    <select value={method} onChange={e => setMethod(e.target.value)}>
+                        <option>GET</option>
+                        <option>HEAD</option>
+                        <option>POST</option>
+                        <option>PUT</option>
+                        <option>DELETE</option>
+                        <option>CONNECT</option>
+                        <option>OPTIONS</option>
+                        <option>TRACE</option>
+                        <option>PATCH</option>
+                    </select>
                     <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
                 </label>
                 <label>
