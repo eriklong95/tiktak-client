@@ -5,9 +5,9 @@ export default function SignupPage(props) {
     const [status, setStatus] = useState('signingUp'); // possible values are 'signingUp', 'success', 'failure'
     const [errorMessage, setErrorMessage] = useState('');
 
-    function createUser(event, name, serverConnection) {
+    function createUser(event, name) {
         event.preventDefault();
-        serverConnection.call(new Request(`http://localhost:5000/users`, {
+        props.callServer(new Request(`http://localhost:5000/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ export default function SignupPage(props) {
         return (
             <>
                 <p>Choose a username</p>
-                <form onSubmit={e => createUser(e, username, props.serverConnection)}>
+                <form onSubmit={e => createUser(e, username)}>
                     <input value={username} onChange={e => {setUsername(e.target.value); setStatus('signingUp');}} />
                     <button>Sign up</button>
                 </form>

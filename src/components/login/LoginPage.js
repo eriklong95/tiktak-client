@@ -5,16 +5,16 @@ export default function LoginPage(props) {
     const [errorMessage, setErrorMessage] = useState('');
     const [errorDialogOpen, setErrorDialogOpen] = useState(false);
 
-    async function handleLoginAttempt(event, username, setLoggedIn, setUser, serverConnection) {
+    async function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
-        const request = new Request(`http://localhost:5000/users/{${username}}`, {
+        const request = new Request(`http://localhost:5000/api/users/${username}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
             }
-        })
+        });
 
-        serverConnection.call(request).then(response => {
+        props.callServer(request).then(response => {
             if (response.ok) {
                 setUser(username); // maybe pass response body instead?
                 setLoggedIn(true);
@@ -37,8 +37,8 @@ export default function LoginPage(props) {
         <>
             <h1>Welcome to tiktak!</h1>
             <p>Log in to start playing.</p>
-            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser, props.serverConnection)}>
-                <input value={textInput} onChange={e => setTextInput(e.target.value)} />
+            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
+                <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} />
                 <button>Login</button>
             </form>
             <p>Not on tiktak yet?<button onClick={props.onClickSignup}>Sign up</button></p>

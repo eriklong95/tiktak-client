@@ -7,11 +7,11 @@ export default function Lobby(props) {
 
     if (status === 'loggingIn') {
         return (
-            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} serverConnection={props.serverConnection} />
+            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} />
         );
     } else if (status === 'signingUp') {
         return (
-            <SignupPage onClickLogin={() => setStatus('loggingIn')} serverConnection={props.serverConnection} />
+            <SignupPage onClickLogin={() => setStatus('loggingIn')} callServer={props.callServer} />
         );
     }
 }

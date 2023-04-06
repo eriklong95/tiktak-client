@@ -4,8 +4,8 @@ import StubResponsesConfig from "./stub/StubResponsesConfig";
 function ServerConnectionController(props) {
     return (
         <>
-            <ServerConnectionConfig setServerConnection={props.setServerConnection} />
-            { props.serverConnection.withStubs && (<StubResponsesConfig stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} />) }
+            <ServerConnectionConfig setHost={props.setHost} setWithStubs={props.setWithStubs} />
+            { props.withStubs && (<StubResponsesConfig stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} />) }
         </>
     )
 }
