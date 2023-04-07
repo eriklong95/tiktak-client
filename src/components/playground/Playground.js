@@ -10,8 +10,19 @@ function Playground(props) {
         playerB: 'stranger',
         status: 'ongoing',
         gameState: {
-            turn: 'B',
-            moves: []
+            turn: 'A',
+            moves: [
+                {
+                    x: 0,
+                    y: 0,
+                    occupier: 'A'
+                },
+                {
+                    x: 1,
+                    y: 1,
+                    occupier: 'B'
+                }
+            ]
         }
     }
 
@@ -22,7 +33,7 @@ function Playground(props) {
             <p>If you wanna play, you've come to the right place!</p>
             <p>Game ID: {props.gameId}</p>
             <p>It is {myTurn ? '' : 'not'} your turn.</p>
-            <Board />
+            <Board moves={demo_game.gameState.moves} />
             <button onClick={() => props.setUserMode('browsing')}>Return to my page</button>
         </>
     );
