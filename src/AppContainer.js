@@ -5,18 +5,12 @@ import { nanoid } from "nanoid";
 
 const DUMMY_STUB_RESPONSE = {
     id: nanoid(),
-    onRequest: new Request('http://localhost:5000/api/users'),
+    onRequest: new Request('http://localhost:5000/api/users/demouser'),
     thenRespond: new Response('', { status: 200 })
 };
 
-const OTHER_STUB_RESPONSE = {
-    id: nanoid(),
-    onRequest: new Request('http://www.google.com', { method: 'POST' }),
-    thenRespond: new Response('', { status: 400 })
-}
-
 function AppContainer() {
-    const [stubResponses, setStubResponses] = useState([DUMMY_STUB_RESPONSE, OTHER_STUB_RESPONSE]);
+    const [stubResponses, setStubResponses] = useState([DUMMY_STUB_RESPONSE]);
     const [host, setHost] = useState('http://localhost:5000');
     const [withStubs, setWithStubs] = useState(true);
 

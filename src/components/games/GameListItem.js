@@ -8,7 +8,7 @@ function GameListItem(props) {
     }
 
     function handlePlay() {
-
+        props.openGame();
     }
 
     return (

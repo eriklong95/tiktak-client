@@ -9,11 +9,16 @@ function MyGames(props) {
     // gameIds should be obtained by syncing with server
     const [gameIds, setGameIds] = useState(GAME_IDS);
 
+    function openGame(id) {
+        props.setActiveGameId(id);
+        props.setUserMode('playing');
+    }
+
     return (
         <>
             <p>My games</p>
             <ul>
-                { gameIds.map(i => <GameListItem gameId={i} key={i}/>) }
+                { gameIds.map(i => <GameListItem gameId={i} key={i} setUserMode={props.setUserMode} openGame={() => openGame(i)} />) }
             </ul>
             <CreateGame user={props.user} />
         </>
