@@ -1,5 +1,15 @@
 function Square(props) {
-    return <button className="square">{props.getOccupier(props.x, props.y)}</button>
+    function move() {
+        props.makeMove(props.x, props.y);
+    }
+
+    const occupier = props.getOccupier(props.x, props.y)
+
+    return (
+        <button className="square" onClick={move}>
+            {occupier}
+        </button>
+    );
 }
 
 export default Square;
