@@ -18,7 +18,7 @@ export default function MyPage(props) {
         );
     } else {
         return (
-            <Playground setUserMode={setUserMode} gameId={activeGameId} />
+            <Playground setUserMode={setUserMode} gameId={activeGameId} user={props.user}/>
         );
     }
 }
