@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function ServerConnectionConfig(props) {
+function ServerConnectionConfig(props) {
     const [hostInput, setHostInput] = useState('');
     const [withStubsInput, setWithStubsInput] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -33,3 +33,5 @@ export default function ServerConnectionConfig(props) {
         </>
     );
 }
+
+export default ServerConnectionConfig;

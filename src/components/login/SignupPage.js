@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SignupPage(props) {
+function SignupPage(props) {
     const [username, setUsername] = useState('');
     const [status, setStatus] = useState('signingUp'); // possible values are 'signingUp', 'success', 'failure'
     const [errorMessage, setErrorMessage] = useState('');
@@ -57,3 +57,5 @@ export default function SignupPage(props) {
     }
 
 }
+
+export default SignupPage;

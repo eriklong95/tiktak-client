@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 
-export default function Lobby(props) {
+function Lobby(props) {
     const [status, setStatus] = useState('loggingIn'); // possible values are 'loggingIn', 'signingUp'
 
     if (status === 'loggingIn') {
@@ -15,3 +15,5 @@ export default function Lobby(props) {
         );
     }
 }
+
+export default Lobby;

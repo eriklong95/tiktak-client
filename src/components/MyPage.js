@@ -2,7 +2,7 @@ import MyData from "./MyData";
 import MyGames from "./MyGames";
 import LogoutButton from "./LogoutButton";
 
-export default function MyPage(props) {
+function MyPage(props) {
     
     return (
         <div>
@@ -12,3 +12,5 @@ export default function MyPage(props) {
         </div>
     );
 }
+
+export default MyPage;

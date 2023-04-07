@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function LoginPage(props) {
+function LoginPage(props) {
     const [textInput, setTextInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [errorDialogOpen, setErrorDialogOpen] = useState(false);
@@ -49,3 +49,5 @@ export default function LoginPage(props) {
         </>
     );
 }
+
+export default LoginPage;
