@@ -1,3 +1,5 @@
+import Board from "./Board";
+
 function Playground(props) {
     // should receive game ID in props
     // then sync data to get game data
@@ -20,6 +22,7 @@ function Playground(props) {
             <p>If you wanna play, you've come to the right place!</p>
             <p>Game ID: {props.gameId}</p>
             <p>It is {myTurn ? '' : 'not'} your turn.</p>
+            <Board />
             <button onClick={() => props.setUserMode('browsing')}>Return to my page</button>
         </>
     );
