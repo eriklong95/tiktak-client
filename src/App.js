@@ -8,7 +8,7 @@ function App(props) {
 
     if (loggedIn) {
         return (
-            <MyPage user={user} logout={() => setLoggedIn(false)} />
+            <MyPage user={user} logout={() => setLoggedIn(false)} callServer={props.callServer} host={props.host} />
         );
     } else {
         return (

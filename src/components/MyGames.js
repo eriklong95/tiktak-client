@@ -15,7 +15,7 @@ function MyGames(props) {
             <ul>
                 { gameIds.map(i => <GameListItem gameId={i} key={i}/>) }
             </ul>
-            <CreateGame user={props.user} />
+            <CreateGame user={props.user} callServer={props.callServer} host={props.host} />
         </>
     );
 }

@@ -24,6 +24,7 @@ function AppContainer() {
         if (withStubs) {
             const stub = stubResponses.find(r => r.onRequest.url === request.url);
             if (stub === undefined) {
+                alert('No stub response for this request! Server will respond with status code 400.')
                 return new Promise((resolve, reject) => {
                     resolve(new Response('', { status: 400 }));
                 })
@@ -40,7 +41,7 @@ function AppContainer() {
 
     return (
         <>
-            <App callServer={callServer} />
+            <App callServer={callServer} host={host} />
             <ServerConnectionController
                 withStubs={withStubs}
                 setHost={setHost}
