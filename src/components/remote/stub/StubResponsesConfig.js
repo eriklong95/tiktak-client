@@ -7,7 +7,7 @@ function StubResponsesConfig(props) {
     return (
         <>
             <StubResponsesDialog open={dialogOpen} setOpen={setDialogOpen} stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} />
-            <button onClick={() => setDialogOpen(true)}>View stub responses</button>
+            <button onClick={() => setDialogOpen(true)}>Edit stub responses</button>
         </>
     );
 }

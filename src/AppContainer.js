@@ -12,12 +12,13 @@ const DUMMY_STUB_RESPONSE = {
 function AppContainer() {
     const [stubResponses, setStubResponses] = useState([DUMMY_STUB_RESPONSE]);
     const [host, setHost] = useState('http://localhost:5000');
-    const [withStubs, setWithStubs] = useState(true);
+    const [withStubs, setWithStubs] = useState(false);
 
     function callServer(request) {
         if (withStubs) {
             const stub = stubResponses.find(r => r.onRequest.url === request.url);
             if (stub === undefined) {
+                alert('No stub response for this request! Server will respond with status code 400.')
                 return new Promise((resolve, reject) => {
                     resolve(new Response('', { status: 400 }));
                 })
@@ -34,7 +35,7 @@ function AppContainer() {
 
     return (
         <>
-            <App callServer={callServer} />
+            <App callServer={callServer} host={host} />
             <ServerConnectionController
                 withStubs={withStubs}
                 setHost={setHost}

@@ -4,7 +4,7 @@ import LogoutButton from "./LogoutButton";
 import Playground from "./playground/Playground";
 import { useState } from "react";
 
-export default function MyPage(props) {
+function MyPage(props) {
     const [userMode, setUserMode] = useState('browsing') // possible values: 'browsing', 'playing'
     const [activeGameId, setActiveGameId] = useState(null);
     
@@ -12,7 +12,7 @@ export default function MyPage(props) {
         return (
             <>
                 <MyData user={props.user}/>
-                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} />
+                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} callServer={props.callServer} host={props.host} />
                 <LogoutButton onLogout={props.logout} />
             </>
         );
@@ -22,3 +22,5 @@ export default function MyPage(props) {
         );
     }
 }
+
+export default MyPage;
