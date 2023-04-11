@@ -3,34 +3,56 @@ import App from "./App";
 import ServerConnectionController from "./components/remote/ServerConnectionController";
 import { nanoid } from "nanoid";
 
-const DUMMY_STUB_RESPONSE = {
+const LOGIN_STUB_RESPONSE = {
     id: nanoid(),
-    onRequest: new Request('http://localhost:5000/api/users'),
-    thenRespond: new Response('', { status: 200 })
+    name: 'login',
+    onRequest: {
+        url: '/api/users/demouser',
+        method: 'GET',
+        body: ''
+    },
+    thenRespond: {
+        status: 200,
+        body: '{"username": "demouser", "rank": 88}'
+    }
 };
 
-const OTHER_STUB_RESPONSE = {
+const CREATE_USER_STUB_RESPONSE = {
     id: nanoid(),
-    onRequest: new Request('http://www.google.com', { method: 'POST' }),
-    thenRespond: new Response('', { status: 400 })
+    name: "create user",
+    onRequest: {
+        url: '/api/users',
+        method: 'POST',
+        body: '"myUsername"'
+    },
+    thenRespond: {
+        status: 201,
+        body: '{"username": "myUsername", "rank": 0}'
+    }
 }
 
 function AppContainer() {
-    const [stubResponses, setStubResponses] = useState([DUMMY_STUB_RESPONSE, OTHER_STUB_RESPONSE]);
-    const [host, setHost] = useState('http://localhost:5000');
+    const [stubResponses, setStubResponses] = useState([LOGIN_STUB_RESPONSE, CREATE_USER_STUB_RESPONSE]);
+    const [host, setHost] = useState('');
     const [withStubs, setWithStubs] = useState(false);
 
+    function matches(request, stubResponse) {
+        return host + stubResponse.onRequest.url === request.url;
+    }
+
     function callServer(request) {
+        console.log(request);
         if (withStubs) {
-            const stub = stubResponses.find(r => r.onRequest.url === request.url);
+            const stub = stubResponses.find(s => matches(request, s));
             if (stub === undefined) {
                 alert('No stub response for this request! Server will respond with status code 400.')
                 return new Promise((resolve, reject) => {
                     resolve(new Response('', { status: 400 }));
-                })
+                });
             } else {
-                const response = stub.thenRespond;
+                console.log(stub.thenRespond);
                 return new Promise((resolve, reject) => {
+                    const response = new Response(stub.thenRespond.body, { status: stub.thenRespond.status });
                     resolve(response);
                 });
             }
