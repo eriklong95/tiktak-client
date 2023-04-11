@@ -111,6 +111,7 @@ function AppContainer() {
             <App callServer={callServer} host={host} />
             <ServerConnectionController
                 withStubs={withStubs}
+                host={host}
                 setHost={setHost}
                 setWithStubs={setWithStubs}
                 stubResponses={stubResponses}
