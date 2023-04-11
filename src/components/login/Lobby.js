@@ -7,11 +7,11 @@ function Lobby(props) {
 
     if (status === 'loggingIn') {
         return (
-            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} />
+            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} host={props.host}/>
         );
     } else if (status === 'signingUp') {
         return (
-            <SignupPage onClickLogin={() => setStatus('loggingIn')} callServer={props.callServer} />
+            <SignupPage onClickLogin={() => setStatus('loggingIn')} callServer={props.callServer} host={props.host} />
         );
     }
 }

@@ -7,7 +7,7 @@ function SignupPage(props) {
 
     function createUser(event, name) {
         event.preventDefault();
-        props.callServer(new Request(`http://localhost:5000/users`, {
+        props.callServer(new Request(`${props.host}/api/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

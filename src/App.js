@@ -12,7 +12,7 @@ function App(props) {
         );
     } else {
         return (
-            <Lobby setLoggedIn={setLoggedIn} setUser={setUser} callServer={props.callServer} />
+            <Lobby setLoggedIn={setLoggedIn} setUser={setUser} callServer={props.callServer} host={props.host} />
         )
     }
 

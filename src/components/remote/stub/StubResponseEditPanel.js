@@ -1,19 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function StubResponseEditPanel(props) {
     const stubResponseToEdit = props.stubResponses.find(r => r.id === props.editId);
+
+    const [name, setName] = useState(stubResponseToEdit.name);
     const [method, setMethod] = useState(stubResponseToEdit.onRequest.method);
     const [url, setUrl] = useState(stubResponseToEdit.onRequest.url);
+    const [requestBody, setRequestBody] = useState(stubResponseToEdit.onRequest.body);
     const [status, setStatus] = useState(stubResponseToEdit.thenRespond.status);
+    const [responseBody, setResponseBody] = useState(stubResponseToEdit.thenRespond.body);
 
-    function handleApply(event, stubId, method, url, status) {
+    function handleApply(event) {
         event.preventDefault();
         props.setStubResponses(previous => previous.map(r => {
-            if (r.id === stubId) {
+            if (r.id === props.editId) {
                 const updatedStubResponse = {
-                    id: stubId,
-                    onRequest: new Request(url, { method: method }),
-                    thenRespond: new Response('', { status: status })
+                    id: props.editId,
+                    name: name,
+                    onRequest: {
+                        url: url,
+                        method: method,
+                        body: requestBody 
+                    },
+                    thenRespond: {
+                        body: responseBody,
+                        status: status
+                    }
                 };
                 return updatedStubResponse;
             } else {
@@ -24,9 +36,12 @@ function StubResponseEditPanel(props) {
 
     function handleReset(event) {
         event.preventDefault();
+        setName(stubResponseToEdit.name);
         setMethod(stubResponseToEdit.onRequest.method);
         setUrl(stubResponseToEdit.onRequest.url);
+        setRequestBody(stubResponseToEdit.onRequest.body);
         setStatus(stubResponseToEdit.thenRespond.status);
+        setResponseBody(stubResponseToEdit.thenRespond.body);
     }
 
     function handleDone(event, stubId, method, url, status) {
@@ -38,7 +53,12 @@ function StubResponseEditPanel(props) {
     return (
         <section>
             <p>Edit stub response</p>
-            <form onSubmit={e => handleApply(e, props.editId, method, url, status)}>
+            <form onSubmit={e => handleApply(e)}>
+                <label>
+                    Name:
+                    <input type="text" value={name} onChange={e => setName(e.target.value)}/>
+                </label>
+                <br/>
                 <label>
                     Request:
                     <select value={method} onChange={e => setMethod(e.target.value)}>
@@ -53,13 +73,18 @@ function StubResponseEditPanel(props) {
                         <option>PATCH</option>
                     </select>
                     <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
+                    <textarea value={requestBody} onChange={e => setRequestBody(e.target.value)} />
                 </label>
+                <br/>
                 <label>
-                    Response: <input type="number" value={status} onChange={e => setStatus(e.target.value)} />
+                    Response: 
+                        <input type="number" value={status} onChange={e => setStatus(e.target.value)} />
+                        <textarea value={responseBody} onChange={e => setResponseBody(e.target.value)} />
                 </label>
+                <br/>
                 <button>Apply</button>
                 <button onClick={e => handleReset(e)}>Reset</button>
-                <button onClick={e => handleDone(e, props.editId, method, url, status)}>Done</button>
+                <button onClick={e => handleDone(e)}>Done</button>
             </form>
         </section>
     );
