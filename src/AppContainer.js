@@ -31,8 +31,55 @@ const CREATE_USER_STUB_RESPONSE = {
     }
 }
 
+const GAMES_STUB_RESPONSE = {
+    id: nanoid(),
+    name: "get game ids",
+    onRequest: {
+        url: '/api/games',
+        method: 'GET'
+    },
+    thenRespond: {
+        status: 200,
+        body: '["a8sfd6sd8afd8s", "asgd9agd89sgd"]'
+    }
+}
+
+const GAME_INFO_STUB_RESPONSE = {
+    id: nanoid(),
+    name: "get game info 1",
+    onRequest: {
+        url: '/api/games/a8sfd6sd8afd8s',
+        method: 'GET'
+    },
+    thenRespond: {
+        status: 200,
+        body: '{"playerA": "demouser", "playerB": "stranger", "status": "ongoing"}'
+    }
+}
+
+const OTHER_GAME_INFO_STUB_RESPONSE = {
+    id: nanoid(),
+    name: "get game info 2",
+    onRequest: {
+        url: '/api/games/asgd9agd89sgd',
+        method: 'GET'
+    },
+    thenRespond: {
+        status: 200,
+        body: '{"playerA": "someone", "playerB": "demouser", "status": "ongoing"}'
+    }
+}
+
 function AppContainer() {
-    const [stubResponses, setStubResponses] = useState([LOGIN_STUB_RESPONSE, CREATE_USER_STUB_RESPONSE]);
+    const [stubResponses, setStubResponses] = useState(
+        [
+            LOGIN_STUB_RESPONSE,
+            CREATE_USER_STUB_RESPONSE,
+            GAMES_STUB_RESPONSE,
+            GAME_INFO_STUB_RESPONSE,
+            OTHER_GAME_INFO_STUB_RESPONSE
+        ]
+    );
     const [host, setHost] = useState('');
     const [withStubs, setWithStubs] = useState(false);
 
@@ -41,7 +88,6 @@ function AppContainer() {
     }
 
     function callServer(request) {
-        console.log(request);
         if (withStubs) {
             const stub = stubResponses.find(s => matches(request, s));
             if (stub === undefined) {
@@ -50,7 +96,6 @@ function AppContainer() {
                     resolve(new Response('', { status: 400 }));
                 });
             } else {
-                console.log(stub.thenRespond);
                 return new Promise((resolve, reject) => {
                     const response = new Response(stub.thenRespond.body, { status: stub.thenRespond.status });
                     resolve(response);

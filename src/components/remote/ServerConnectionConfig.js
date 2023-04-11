@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function ServerConnectionConfig(props) {
-    const [hostInput, setHostInput] = useState('');
+    const [hostInput, setHostInput] = useState('http://localhost:5000');
     const [withStubsInput, setWithStubsInput] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
 
