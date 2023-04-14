@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./editpanel.module.css";
 
 function StubResponseEditPanel(props) {
     const stubResponseToEdit = props.stubResponses.find(r => r.id === props.editId);
@@ -51,7 +52,7 @@ function StubResponseEditPanel(props) {
     }
 
     return (
-        <section>
+        <section className={styles.editpanel}>
             <p>Edit stub response</p>
             <form onSubmit={e => handleApply(e)}>
                 <label>

@@ -1,0 +1,9 @@
+.method {
+    width: 10;
+}
+
+.editpanel {
+    border: 2px solid;
+    padding: 1rem;
+    margin: 5px;
+}

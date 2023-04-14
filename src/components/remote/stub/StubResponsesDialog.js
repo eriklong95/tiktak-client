@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import StubResponseListItem from "./StubResponseListItem";
 import StubResponseEditPanel from "./StubResponseEditPanel";
 import { useState } from "react";
+import styles from "./dialog.module.css";
 
 function StubResponsesDialog(props) {
     const [editId, setEditId] = useState(props.stubResponses[0].id);
@@ -25,7 +26,7 @@ function StubResponsesDialog(props) {
     return (
         <dialog open={props.open}>
             <p>An overview of all stub responses</p>
-            <ul>
+            <ul className={styles.list}>
                 { props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} marked={editId === r.id} setEditId={setEditId} />) }
             </ul>
             <button onClick={handleCreateNew}>Create new stub response</button>

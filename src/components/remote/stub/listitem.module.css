@@ -1,0 +1,28 @@
+.method {
+    width: 4rem;
+}
+
+.status {
+    width: 2rem;
+    text-align: center;
+}
+
+.url {
+    width: 15rem;
+}
+
+.stubresponserow {
+    display: flex;
+    margin: 10px;
+    height: 1rem;
+}
+
+.fields {
+    flex: 5;
+    margin: 20px;
+}
+
+.buttons {
+    flex: 1;
+    margin: 20px;
+}

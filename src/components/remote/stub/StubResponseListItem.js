@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import styles from "./listitem.module.css"
 
 function StubResponseListItem(props) {
     const name = props.stubResponse.name;
@@ -33,25 +34,29 @@ function StubResponseListItem(props) {
 
     return (
         <li>
-            <form onSubmit={e => e.preventDefault()}>
-                <label>
-                    Name:
-                    <input type="text" value={name} readOnly/>
-                </label>
-                <label>
-                    Request:
-                    <input type="text" value={method} readOnly/>
-                    <input type="text" value={url} readOnly/>
-                </label>
-                <label>
-                    Response: 
-                        <input type="text" value={status} readOnly/>
-                </label>
-                <button onClick={handleEdit}>Edit</button>
-                <button onClick={() => handleCopy(url, status)}>Copy</button>
-                <button onClick={handleDelete}>Delete</button>
-                { props.marked && <label>this</label> }
-            </form>
+            <div id="row" className={styles.stubresponserow}>
+                <div className={styles.fields}>
+                    <label>
+                        Name:
+                        <input type="text" value={name} readOnly />
+                    </label>
+                    <label>
+                        Request:
+                        <input type="text" value={method} readOnly className={styles.method} />
+                        <input type="text" value={url} readOnly className={styles.url} />
+                    </label>
+                    <label>
+                        Response:
+                        <input type="text" value={status} readOnly className={styles.status} />
+                    </label>
+                </div>
+                <div className={styles.buttons}>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={() => handleCopy(url, status)}>Copy</button>
+                    <button onClick={handleDelete}>Delete</button>
+                    {props.marked && <label>this</label>}
+                </div>
+            </div>
         </li>
     );
 }
