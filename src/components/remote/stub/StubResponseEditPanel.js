@@ -73,13 +73,13 @@ function StubResponseEditPanel(props) {
                         <option>PATCH</option>
                     </select>
                     <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-                    <textarea value={requestBody} onChange={e => setRequestBody(e.target.value)} />
+                    <textarea rows="10" cols="25" value={requestBody} onChange={e => setRequestBody(e.target.value)} />
                 </label>
                 <br/>
                 <label>
                     Response: 
                         <input type="number" value={status} onChange={e => setStatus(e.target.value)} />
-                        <textarea value={responseBody} onChange={e => setResponseBody(e.target.value)} />
+                        <textarea rows="10" cols="25" value={responseBody} onChange={e => setResponseBody(e.target.value)} />
                 </label>
                 <br/>
                 <button>Apply</button>
