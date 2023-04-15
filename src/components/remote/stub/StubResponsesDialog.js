@@ -24,13 +24,15 @@ function StubResponsesDialog(props) {
     }
 
     return (
-        <dialog open={props.open}>
-            <h1>An overview of all stub responses</h1>
-            <ul className={styles.list}>
-                {props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} selected={editId === r.id} setEditId={setEditId} />)}
-            </ul>
-            <div className={styles.createnewcontainer}>
-                <button onClick={handleCreateNew} className={styles.createnew}>Create new stub response</button>
+        <dialog open={props.open} className={styles.dialog}>
+            <div>
+                <h1>An overview of all stub responses</h1>
+                <ul className={styles.list}>
+                    {props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} selected={editId === r.id} setEditId={setEditId} />)}
+                </ul>
+                <div className={styles.createnewcontainer}>
+                    <button onClick={handleCreateNew} className={styles.createnew}>Create new stub response</button>
+                </div>
             </div>
             <StubResponseEditPanel stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} editId={editId} closeDialog={() => props.setOpen(false)} key={editId} />
         </dialog>

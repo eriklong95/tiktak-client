@@ -11,3 +11,7 @@
     justify-content: right;
     padding: 1rem;
 }
+
+.dialog {
+    display: flex;
+}

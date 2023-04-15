@@ -11,7 +11,7 @@
 .editsections {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 20px;
 }
 
 .requestsection {
@@ -34,11 +34,13 @@
 
 .request {
     display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
 .response {
     display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
