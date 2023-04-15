@@ -7,3 +7,42 @@
     padding: 1rem;
     margin: 5px;
 }
+
+.editsections {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.requestsection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.responsesection {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    gap: 2px;
+}
+
+.request {
+    display: flex;
+    gap: 15px;
+}
+
+.response {
+    display: flex;
+    gap: 15px;
+}
+
+.fieldcontainer {
+    display: flex;
+    gap: 5px;
+}
