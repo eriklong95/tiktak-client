@@ -18,10 +18,12 @@ function StubResponseListItem(props) {
             name: `${name} Copy`,
             onRequest: {
                 url: url,
-                method: method
+                method: method,
+                body: props.stubResponse.onRequest.body
             },
             thenRespond: {
-                status: status
+                status: status,
+                body: props.stubResponse.thenRespond.body
             }
         };
         props.setEditId(newId);
