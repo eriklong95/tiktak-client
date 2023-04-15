@@ -9,12 +9,12 @@ function StubResponsesDialog(props) {
 
     function handleCreateNew() {
         const id = nanoid();
-        const newStubResponse = { 
-            id: id, 
+        const newStubResponse = {
+            id: id,
             name: '',
             onRequest: {
                 url: ''
-            }, 
+            },
             thenRespond: {
                 status: 200
             }
@@ -25,11 +25,13 @@ function StubResponsesDialog(props) {
 
     return (
         <dialog open={props.open}>
-            <p>An overview of all stub responses</p>
+            <h1>An overview of all stub responses</h1>
             <ul className={styles.list}>
-                { props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} marked={editId === r.id} setEditId={setEditId} />) }
+                {props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} selected={editId === r.id} setEditId={setEditId} />)}
             </ul>
-            <button onClick={handleCreateNew}>Create new stub response</button>
+            <div className={styles.createnewcontainer}>
+                <button onClick={handleCreateNew} className={styles.createnew}>Create new stub response</button>
+            </div>
             <StubResponseEditPanel stubResponses={props.stubResponses} setStubResponses={props.setStubResponses} editId={editId} closeDialog={() => props.setOpen(false)} key={editId} />
         </dialog>
     );

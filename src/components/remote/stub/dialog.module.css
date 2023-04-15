@@ -1,3 +1,13 @@
 .list {
     margin: 2rem;
 }
+
+.createnew {
+    color: blue;
+}
+
+.createnewcontainer {
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+}

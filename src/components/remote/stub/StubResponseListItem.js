@@ -34,27 +34,26 @@ function StubResponseListItem(props) {
 
     return (
         <li>
-            <div id="row" className={styles.stubresponserow}>
+            <div className={`${styles.stubresponserow} ${props.selected && styles.selected}`}>
                 <div className={styles.fields}>
-                    <label>
-                        Name:
-                        <input type="text" value={name} readOnly />
-                    </label>
-                    <label>
-                        Request:
+                    <div className={styles.name}>
+                        <label className={styles.namelabel}>Name:</label>
+                        <input type="text" value={name} readOnly className={styles.namebox}/>
+                    </div>
+                    <div className={styles.request}>
+                        <label className={styles.requestlabel}>Request:</label>
                         <input type="text" value={method} readOnly className={styles.method} />
                         <input type="text" value={url} readOnly className={styles.url} />
-                    </label>
-                    <label>
-                        Response:
+                    </div>
+                    <div className={styles.response}>
+                        <label>Response:</label>
                         <input type="text" value={status} readOnly className={styles.status} />
-                    </label>
+                    </div>
                 </div>
                 <div className={styles.buttons}>
                     <button onClick={handleEdit}>Edit</button>
                     <button onClick={() => handleCopy(url, status)}>Copy</button>
                     <button onClick={handleDelete}>Delete</button>
-                    {props.marked && <label>this</label>}
                 </div>
             </div>
         </li>

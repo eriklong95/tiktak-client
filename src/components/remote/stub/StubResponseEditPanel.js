@@ -53,7 +53,7 @@ function StubResponseEditPanel(props) {
 
     return (
         <section className={styles.editpanel}>
-            <p>Edit stub response</p>
+            <h2>Edit stub response</h2>
             <form onSubmit={e => handleApply(e)}>
                 <label>
                     Name:
@@ -68,9 +68,6 @@ function StubResponseEditPanel(props) {
                         <option>POST</option>
                         <option>PUT</option>
                         <option>DELETE</option>
-                        <option>CONNECT</option>
-                        <option>OPTIONS</option>
-                        <option>TRACE</option>
                         <option>PATCH</option>
                     </select>
                     <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
