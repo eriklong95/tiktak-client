@@ -1,3 +1,5 @@
+import styles from "./square.module.css";
+
 function Square(props) {
     function move() {
         props.makeMove(props.x, props.y);
@@ -6,7 +8,7 @@ function Square(props) {
     const occupier = props.getOccupier(props.x, props.y)
 
     return (
-        <button className="square" onClick={move}>
+        <button className={styles.square} onClick={move}>
             {occupier}
         </button>
     );
