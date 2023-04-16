@@ -9,7 +9,7 @@ function Playground(props) {
         <div className={styles.playground}>
             <p>If you wanna play, you've come to the right place!</p>
             <p>Game ID: {props.gameId}</p>
-            <BoardContainer game={game} user={props.user} />
+            <BoardContainer game={game} user={props.user} callServer={props.callServer} />
             <button onClick={() => props.setUserMode('browsing')}>Return to my page</button>
         </div>
     );

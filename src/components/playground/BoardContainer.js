@@ -6,8 +6,9 @@ function BoardContainer(props) {
         const userIsA = props.game.playerA === props.user;
         const myTurn = (userIsA && props.game.gameState.turn === 'A') || (!userIsA && props.game.gameState.turn === 'B');
 
-        if (myTurn) {
-            throw new Error('It is not your turn.')
+        if (!myTurn) {
+            alert('It is not your turn.')
+            return;
         }
 
         const myRole = userIsA ? 'A' : 'B';
