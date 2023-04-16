@@ -3,8 +3,8 @@ import Board from "./Board";
 function BoardContainer(props) {
 
     function makeMove(x, y) {
-        const userIsA = game.playerA === props.user;
-        const myTurn = (userIsA && game.gameState.turn === 'A') || (!userIsA && game.gameState.turn === 'B');
+        const userIsA = props.game.playerA === props.user;
+        const myTurn = (userIsA && props.game.gameState.turn === 'A') || (!userIsA && props.game.gameState.turn === 'B');
 
         if (myTurn) {
             throw new Error('It is not your turn.')
@@ -12,7 +12,7 @@ function BoardContainer(props) {
 
         const myRole = userIsA ? 'A' : 'B';
 
-        const request = new Request(`${props.host}/api/games/${props.gameId}/moves`, {
+        const request = new Request(`${props.host}/api/games/${props.game.id}/moves`, {
             method: 'POST',
             body: `{"x": ${x}, "y": ${y}, "occupier": "${myRole}"}`
         });
