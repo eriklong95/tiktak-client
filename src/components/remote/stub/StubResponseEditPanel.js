@@ -4,6 +4,10 @@ import styles from "./editpanel.module.css";
 function StubResponseEditPanel(props) {
     const stubResponseToEdit = props.stubResponses.find(r => r.id === props.editId);
 
+    if (stubResponseToEdit === undefined) {
+        return <></>;
+    }
+
     const [name, setName] = useState(stubResponseToEdit.name);
     const [method, setMethod] = useState(stubResponseToEdit.onRequest.method);
     const [url, setUrl] = useState(stubResponseToEdit.onRequest.url);

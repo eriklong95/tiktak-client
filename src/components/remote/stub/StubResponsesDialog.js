@@ -26,7 +26,7 @@ function StubResponsesDialog(props) {
     return (
         <dialog open={props.open} className={styles.dialog}>
             <div>
-                <h1>An overview of all stub responses</h1>
+                <h1>Stub responses</h1>
                 <ul className={styles.list}>
                     {props.stubResponses.map(r => <StubResponseListItem stubResponse={r} key={r.id} setStubResponses={props.setStubResponses} selected={editId === r.id} setEditId={setEditId} />)}
                 </ul>
