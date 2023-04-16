@@ -1,5 +1,6 @@
 import useData from "../../hooks/useData";
 import BoardContainer from "./BoardContainer";
+import GameInfo from "./GameInfo";
 import styles from "./playground.module.css";
 
 function Playground(props) {
@@ -7,8 +8,8 @@ function Playground(props) {
 
     return (
         <div className={styles.playground}>
-            <p>If you wanna play, you've come to the right place!</p>
             <p>Game ID: {props.gameId}</p>
+            <GameInfo game={game} user={props.user}/>
             <BoardContainer game={game} user={props.user} callServer={props.callServer} />
             <button onClick={() => props.setUserMode('browsing')}>Return to my page</button>
         </div>
