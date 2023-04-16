@@ -17,7 +17,8 @@
 }
 
 .url {
-    flex: auto;
+    flex: initial;
+    width: 15rem;
 }
 
 .status {

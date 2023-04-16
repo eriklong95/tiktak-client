@@ -2,16 +2,12 @@
     margin: 2rem;
 }
 
-.createnew {
-    color: blue;
-}
-
-.createnewcontainer {
+.buttons {
     display: flex;
     justify-content: right;
     padding: 1rem;
 }
 
-.dialog {
+.content {
     display: flex;
 }

@@ -49,12 +49,6 @@ function StubResponseEditPanel(props) {
         setResponseBody(stubResponseToEdit.thenRespond.body);
     }
 
-    function handleDone(event, stubId, method, url, status) {
-        event.preventDefault();
-        handleApply(event, stubId, method, url, status);
-        props.closeDialog();
-    }
-
     return (
         <div className={styles.editpanel}>
             <h2>Edit stub response</h2>
@@ -82,7 +76,7 @@ function StubResponseEditPanel(props) {
                             </label>
                             <label className={styles.fieldcontainer}>
                                 URL
-                                <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
+                                <input type="text" value={url} onChange={e => setUrl(e.target.value)} className={styles.url}/>
                             </label>
                         </div>
                         <div>
@@ -105,7 +99,6 @@ function StubResponseEditPanel(props) {
                 <div className={styles.buttons}>
                     <button onClick={e => handleApply(e)}>Apply</button>
                     <button onClick={e => handleReset(e)}>Reset</button>
-                    <button onClick={e => handleDone(e)}>Done</button>
                 </div>
             </div>
         </div>

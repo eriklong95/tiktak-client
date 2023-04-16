@@ -48,3 +48,8 @@
     display: flex;
     gap: 5px;
 }
+
+.url {
+    flex: initial;
+    width: 15rem;
+}
