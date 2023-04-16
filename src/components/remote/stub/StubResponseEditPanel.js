@@ -1,7 +1,12 @@
 import { useState } from "react";
+import styles from "./editpanel.module.css";
 
 function StubResponseEditPanel(props) {
     const stubResponseToEdit = props.stubResponses.find(r => r.id === props.editId);
+
+    if (stubResponseToEdit === undefined) {
+        return <></>;
+    }
 
     const [name, setName] = useState(stubResponseToEdit.name);
     const [method, setMethod] = useState(stubResponseToEdit.onRequest.method);
@@ -20,7 +25,7 @@ function StubResponseEditPanel(props) {
                     onRequest: {
                         url: url,
                         method: method,
-                        body: requestBody 
+                        body: requestBody
                     },
                     thenRespond: {
                         body: responseBody,
@@ -44,49 +49,59 @@ function StubResponseEditPanel(props) {
         setResponseBody(stubResponseToEdit.thenRespond.body);
     }
 
-    function handleDone(event, stubId, method, url, status) {
-        event.preventDefault();
-        handleApply(event, stubId, method, url, status);
-        props.closeDialog();
-    }
-
     return (
-        <section>
-            <p>Edit stub response</p>
-            <form onSubmit={e => handleApply(e)}>
-                <label>
-                    Name:
-                    <input type="text" value={name} onChange={e => setName(e.target.value)}/>
-                </label>
-                <br/>
-                <label>
-                    Request:
-                    <select value={method} onChange={e => setMethod(e.target.value)}>
-                        <option>GET</option>
-                        <option>HEAD</option>
-                        <option>POST</option>
-                        <option>PUT</option>
-                        <option>DELETE</option>
-                        <option>CONNECT</option>
-                        <option>OPTIONS</option>
-                        <option>TRACE</option>
-                        <option>PATCH</option>
-                    </select>
-                    <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
-                    <textarea value={requestBody} onChange={e => setRequestBody(e.target.value)} />
-                </label>
-                <br/>
-                <label>
-                    Response: 
-                        <input type="number" value={status} onChange={e => setStatus(e.target.value)} />
-                        <textarea value={responseBody} onChange={e => setResponseBody(e.target.value)} />
-                </label>
-                <br/>
-                <button>Apply</button>
-                <button onClick={e => handleReset(e)}>Reset</button>
-                <button onClick={e => handleDone(e)}>Done</button>
-            </form>
-        </section>
+        <div className={styles.editpanel}>
+            <h2>Edit stub response</h2>
+            <div>
+                <div className={styles.editsections}>
+                    <section>
+                        <label className={styles.fieldcontainer}>
+                            Name
+                            <input type="text" value={name} onChange={e => setName(e.target.value)} />
+                        </label>
+                    </section>
+                    <section className={styles.requestsection}>
+                        <h3>Request</h3>
+                        <div className={styles.request}>
+                            <label className={styles.fieldcontainer}>
+                                HTTP method
+                                <select value={method} onChange={e => setMethod(e.target.value)}>
+                                    <option>GET</option>
+                                    <option>HEAD</option>
+                                    <option>POST</option>
+                                    <option>PUT</option>
+                                    <option>DELETE</option>
+                                    <option>PATCH</option>
+                                </select>
+                            </label>
+                            <label className={styles.fieldcontainer}>
+                                URL
+                                <input type="text" value={url} onChange={e => setUrl(e.target.value)} className={styles.url}/>
+                            </label>
+                        </div>
+                        <div>
+                            <textarea placeholder="Request body" value={requestBody} onChange={e => setRequestBody(e.target.value)} />
+                        </div>
+                    </section>
+                    <section className={styles.responsesection}>
+                        <h3>Response</h3>
+                        <div className={styles.response}>
+                            <label className={styles.fieldcontainer}>
+                                Status code
+                                <input type="number" value={status} onChange={e => setStatus(e.target.value)} />
+                            </label>
+                        </div>
+                        <div>
+                            <textarea placeholder="Response body" value={responseBody} onChange={e => setResponseBody(e.target.value)} />
+                        </div>
+                    </section>
+                </div>
+                <div className={styles.buttons}>
+                    <button onClick={e => handleApply(e)}>Apply</button>
+                    <button onClick={e => handleReset(e)}>Reset</button>
+                </div>
+            </div>
+        </div>
     );
 }
 

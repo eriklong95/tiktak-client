@@ -1,0 +1,13 @@
+.list {
+    margin: 2rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    padding: 1rem;
+}
+
+.content {
+    display: flex;
+}

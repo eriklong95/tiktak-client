@@ -1,4 +1,5 @@
 import { nanoid } from "nanoid";
+import styles from "./listitem.module.css"
 
 function StubResponseListItem(props) {
     const name = props.stubResponse.name;
@@ -17,10 +18,12 @@ function StubResponseListItem(props) {
             name: `${name} Copy`,
             onRequest: {
                 url: url,
-                method: method
+                method: method,
+                body: props.stubResponse.onRequest.body
             },
             thenRespond: {
-                status: status
+                status: status,
+                body: props.stubResponse.thenRespond.body
             }
         };
         props.setEditId(newId);
@@ -33,25 +36,28 @@ function StubResponseListItem(props) {
 
     return (
         <li>
-            <form onSubmit={e => e.preventDefault()}>
-                <label>
-                    Name:
-                    <input type="text" value={name} readOnly/>
-                </label>
-                <label>
-                    Request:
-                    <input type="text" value={method} readOnly/>
-                    <input type="text" value={url} readOnly/>
-                </label>
-                <label>
-                    Response: 
-                        <input type="text" value={status} readOnly/>
-                </label>
-                <button onClick={handleEdit}>Edit</button>
-                <button onClick={() => handleCopy(url, status)}>Copy</button>
-                <button onClick={handleDelete}>Delete</button>
-                { props.marked && <label>this</label> }
-            </form>
+            <div className={`${styles.stubresponserow} ${props.selected && styles.selected}`}>
+                <div className={styles.fields}>
+                    <div className={styles.name}>
+                        <label className={styles.namelabel}>Name:</label>
+                        <input type="text" value={name} readOnly className={styles.namebox}/>
+                    </div>
+                    <div className={styles.request}>
+                        <label className={styles.requestlabel}>Request:</label>
+                        <input type="text" value={method} readOnly className={styles.method} />
+                        <input type="text" value={url} readOnly className={styles.url} />
+                    </div>
+                    <div className={styles.response}>
+                        <label>Response:</label>
+                        <input type="text" value={status} readOnly className={styles.status} />
+                    </div>
+                </div>
+                <div className={styles.buttons}>
+                    <button onClick={handleEdit}>Edit</button>
+                    <button onClick={() => handleCopy(url, status)}>Copy</button>
+                    <button onClick={handleDelete}>Delete</button>
+                </div>
+            </div>
         </li>
     );
 }
