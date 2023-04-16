@@ -53,7 +53,7 @@ const GAME_INFO_STUB_RESPONSE = {
     },
     thenRespond: {
         status: 200,
-        body: '{"playerA": "demouser", "playerB": "stranger", "status": "ongoing"}'
+        body: '{"playerA": "demouser", "playerB": "stranger", "status": "ongoing", "gameState": {"turn": "A", "moves": []}}'
     }
 }
 

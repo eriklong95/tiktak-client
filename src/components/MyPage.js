@@ -18,7 +18,7 @@ function MyPage(props) {
         );
     } else {
         return (
-            <Playground setUserMode={setUserMode} gameId={activeGameId} user={props.user}/>
+            <Playground host={props.host} callServer={props.callServer} setUserMode={setUserMode} gameId={activeGameId} user={props.user}/>
         );
     }
 }

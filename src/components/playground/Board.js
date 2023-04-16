@@ -1,6 +1,7 @@
 import Square from "./Square";
 
 function Board(props) {
+
     function getOccupier(x, y) {
         const move = props.moves.find(m => m.x === x && m.y === y);
         if (move === undefined) {
