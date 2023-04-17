@@ -1,4 +1,5 @@
 import useData from "../../hooks/useData";
+import styles from "./gamelistitem.module.css";
 
 function GameListItem(props) {
     const game = useData(`${props.host}/api/games/${props.gameId}`, props.callServer);
@@ -9,20 +10,24 @@ function GameListItem(props) {
 
     if (game !== null) {
         return (
-            <li>
-                <label>
-                    Game ID: <input type="text" value={props.gameId} readOnly/>
-                </label>
-                <label>
-                    Player A: <input type="text" value={game.playerA} readOnly/>
-                </label>
-                <label>
-                    Player B: <input type="text" value={game.playerB} readOnly/>
-                </label>
-                <label>
-                    Status: <input type="text" value={game.status} readOnly/>
-                </label>
-                <button onClick={handlePlay}>Play</button>
+            <li className={styles.listitem}>
+                <div className={styles.field}>
+                    <label>Game ID</label>
+                    <input type="text" value={props.gameId} readOnly className={styles.valuebox}/>
+                </div>
+                <div className={styles.field}>
+                    <label>Player A</label >
+                    <input type="text" value={game.playerA} readOnly className={styles.valuebox}/>
+                </div>
+                <div className={styles.field}>
+                    <label>Player B</label>
+                    <input type="text" value={game.playerB} readOnly className={styles.valuebox}/>
+                </div>
+                <div className={styles.field}>
+                    <label>Status</label>
+                    <input type="text" value={game.status} readOnly className={styles.valuebox}/>
+                </div>
+                <button onClick={handlePlay} className={styles.playbutton}>Play</button>
             </li>
         );
     } else {
