@@ -3,4 +3,7 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
+    background-color: aquamarine;
+    width: 40%;
+    margin: auto;
 }
