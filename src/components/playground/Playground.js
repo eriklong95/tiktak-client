@@ -11,7 +11,7 @@ function Playground(props) {
             <p>Game ID: {props.gameId}</p>
             <GameInfo game={game} user={props.user}/>
             <BoardContainer game={game} user={props.user} callServer={props.callServer} />
-            <button onClick={() => props.setUserMode('browsing')}>Return to my page</button>
+            <button onClick={() => props.setUserMode('browsing')} className={styles.exitbutton}>Return to my page</button>
         </div>
     );
 }

@@ -21,6 +21,6 @@
 
 .playbutton {
     flex: initial;
-    color: purple;
-    background-color: turquoise;
+    color: white;
+    background-color: red;
 }

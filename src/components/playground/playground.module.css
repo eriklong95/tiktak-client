@@ -2,8 +2,14 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    background-color: aquamarine;
+    gap: 15px;
+    background-color: turquoise;
     width: 40%;
     margin: auto;
+    padding: 1rem;
+}
+
+.exitbutton {
+    background-color: red;
+    color: white;
 }
