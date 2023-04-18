@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CreateGameDialog from "./CreateGameDialog";
 import CreateGameInfoBox from "./CreateGameInfoBox";
+import styles from './creategame.module.css';
 
 function CreateGame(props) {
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -9,7 +10,7 @@ function CreateGame(props) {
 
     return (
         <>
-            <button onClick={() => setDialogOpen(true)}>Create a new game!</button>
+            <button onClick={() => setDialogOpen(true)} className={styles.newgamebutton}>Create a new game!</button>
             <CreateGameDialog
                 open={dialogOpen}
                 setDialogOpen={setDialogOpen}

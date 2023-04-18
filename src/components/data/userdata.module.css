@@ -1,0 +1,23 @@
+.userdatapanel {
+    background-color: brown;
+    width: 30%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.field {
+    display: flex;
+    gap: 5px;
+    color: lightgreen;
+}
+
+.valuebox {
+    color: hotpink;
+    background-color: beige;
+}
+
+.heading {
+    color: yellow;
+}

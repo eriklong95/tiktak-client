@@ -1,8 +1,8 @@
 import MyData from "./MyData";
 import MyGames from "./MyGames";
-import LogoutButton from "./LogoutButton";
 import Playground from "./playground/Playground";
 import { useState } from "react";
+import styles from './mypage.module.css';
 
 function MyPage(props) {
     const [userMode, setUserMode] = useState('browsing') // possible values: 'browsing', 'playing'
@@ -10,11 +10,11 @@ function MyPage(props) {
     
     if (userMode === 'browsing') {
         return (
-            <>
+            <div className={styles.mypage}>
                 <MyData user={props.user}/>
                 <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} callServer={props.callServer} host={props.host} />
-                <LogoutButton onLogout={props.logout} />
-            </>
+                <button onClick={props.logout} className={styles.logoutbutton}>Log out</button>
+            </div>
         );
     } else {
         return (
