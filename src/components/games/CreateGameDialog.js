@@ -26,6 +26,11 @@ function CreateGameDialog(props) {
         });
     }
 
+    function handleCancel(event) {
+        event.preventDefault();
+        props.setDialogOpen(false);
+    }
+
     return (
         <dialog open={props.open}>
             <form method="dialog">
@@ -34,6 +39,7 @@ function CreateGameDialog(props) {
                     Opponent: <input type="text" value={opponent} onChange={e => setOpponent(e.target.value)} />
                 </label>
                 <button onClick={e => handleConfirm(e)}>Confirm</button>
+                <button onClick={e => handleCancel(e)}>Cancel</button>
             </form>
         </dialog>
     );
