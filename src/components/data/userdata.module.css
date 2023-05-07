@@ -1,5 +1,5 @@
 .userdatapanel {
-    background-color: brown;
+    background-color: turquoise;
     width: 30%;
     padding: 1rem;
     display: flex;
@@ -10,14 +10,16 @@
 .field {
     display: flex;
     gap: 5px;
-    color: lightgreen;
+    color: orangered;
+    background-color: pink;
+    padding: 1rem;
 }
 
 .valuebox {
-    color: hotpink;
+    color: blue;
     background-color: beige;
 }
 
 .heading {
-    color: yellow;
+    color: black;
 }

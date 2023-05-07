@@ -7,18 +7,20 @@ import styles from './mypage.module.css';
 function MyPage(props) {
     const [userMode, setUserMode] = useState('browsing') // possible values: 'browsing', 'playing'
     const [activeGameId, setActiveGameId] = useState(null);
-    
+
     if (userMode === 'browsing') {
         return (
             <div className={styles.mypage}>
-                <MyData user={props.user}/>
+                <MyData user={props.user} />
                 <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} callServer={props.callServer} host={props.host} />
                 <button onClick={props.logout} className={styles.logoutbutton}>Log out</button>
             </div>
         );
     } else {
         return (
-            <Playground host={props.host} callServer={props.callServer} setUserMode={setUserMode} gameId={activeGameId} user={props.user}/>
+            <div className={styles.mypage}>
+                <Playground host={props.host} callServer={props.callServer} setUserMode={setUserMode} gameId={activeGameId} user={props.user} />
+            </div>
         );
     }
 }
