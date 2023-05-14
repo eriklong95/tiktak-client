@@ -36,19 +36,22 @@ function LoginPage(props) {
 
     return (
         <div className={styles.loginpage}>
-            <h1>Welcome to tiktak!</h1>
-            <div className={styles.userfocus}>
-                <p>Log in to start playing.</p>
-                <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
-                    <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} className={styles.inputfield} />
-                    <button className={styles.loginbutton}>Login</button>
-                </form>
+            <div className={styles.loginform}>
+                <h1>Welcome to tiktak!</h1>
+
+                <div className={styles.userfocus}>
+                    <p>Log in to start playing.</p>
+                    <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
+                        <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} className={styles.inputfield} />
+                        <button className={styles.loginbutton}>Login</button>
+                    </form>
+                </div>
+                <dialog open={errorDialogOpen}>
+                    <p>{errorMessage}</p>
+                    <button onClick={() => setErrorDialogOpen(false)}>OK</button>
+                </dialog>
             </div>
-            <p>Not on tiktak yet?<button onClick={props.onClickSignup}>Sign up</button></p>
-            <dialog open={errorDialogOpen}>
-                <p>{errorMessage}</p>
-                <button onClick={() => setErrorDialogOpen(false)}>OK</button>
-            </dialog>
+            <p>Not on tiktak yet?<button onClick={props.onClickSignup} className={styles.signup}>Sign up</button></p>
         </div>
     );
 }

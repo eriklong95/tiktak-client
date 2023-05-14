@@ -1,15 +1,26 @@
-.loginpage {
+.loginform {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: turquoise;
-    width: 50%;
+    width: 20%;
+    padding: 1rem;
+}
+
+.loginpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: initial;
+    width: 100%;
+    gap: 2rem;
 }
 
 .userfocus {
     color: orangered;
     background-color: pink;
     padding: 1rem;
+    flex: auto;
 }
 
 .inputfield {
@@ -20,4 +31,11 @@
 .loginbutton {
     color: white;
     background-color: red;
+}
+
+.signup {
+    width: 5rem;
+    flex: initial;
+    color: yellow;
+    background-color: magenta;
 }
