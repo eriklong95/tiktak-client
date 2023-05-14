@@ -1,13 +1,16 @@
 import { useState } from "react";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
+import styles from "./lobby.module.css"
 
 function Lobby(props) {
     const [status, setStatus] = useState('loggingIn'); // possible values are 'loggingIn', 'signingUp'
 
     if (status === 'loggingIn') {
         return (
-            <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} host={props.host}/>
+            <div className={styles.lobby}>
+                <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} host={props.host} />
+            </div>
         );
     } else if (status === 'signingUp') {
         return (

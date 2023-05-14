@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./loginpage.module.css"
 
 function LoginPage(props) {
     const [textInput, setTextInput] = useState('');
@@ -34,19 +35,21 @@ function LoginPage(props) {
 
 
     return (
-        <>
+        <div className={styles.loginpage}>
             <h1>Welcome to tiktak!</h1>
-            <p>Log in to start playing.</p>
-            <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
-                <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} />
-                <button>Login</button>
-            </form>
+            <div className={styles.userfocus}>
+                <p>Log in to start playing.</p>
+                <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
+                    <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} className={styles.inputfield} />
+                    <button className={styles.loginbutton}>Login</button>
+                </form>
+            </div>
             <p>Not on tiktak yet?<button onClick={props.onClickSignup}>Sign up</button></p>
             <dialog open={errorDialogOpen}>
                 <p>{errorMessage}</p>
                 <button onClick={() => setErrorDialogOpen(false)}>OK</button>
             </dialog>
-        </>
+        </div>
     );
 }
 

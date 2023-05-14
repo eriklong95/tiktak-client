@@ -1,0 +1,23 @@
+.loginpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: turquoise;
+    width: 50%;
+}
+
+.userfocus {
+    color: orangered;
+    background-color: pink;
+    padding: 1rem;
+}
+
+.inputfield {
+    color: blue;
+    background-color: beige;
+}
+
+.loginbutton {
+    color: white;
+    background-color: red;
+}
