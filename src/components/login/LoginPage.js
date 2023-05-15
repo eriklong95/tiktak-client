@@ -51,7 +51,10 @@ function LoginPage(props) {
                     <button onClick={() => setErrorDialogOpen(false)}>OK</button>
                 </dialog>
             </div>
-            <p>Not on tiktak yet?<button onClick={props.onClickSignup} className={styles.signup}>Sign up</button></p>
+            <div className={styles.signuplink}>
+                <label>Not on tiktak yet?</label>
+                <button onClick={props.onClickSignup} className={styles.signupbutton}>Sign up</button>
+            </div>
         </div>
     );
 }

@@ -33,9 +33,15 @@
     background-color: red;
 }
 
-.signup {
+.signupbutton {
     width: 5rem;
     flex: initial;
     color: yellow;
     background-color: magenta;
+}
+
+.signuplink {
+    color: yellow;
+    display: flex;
+    gap: 3px;
 }
