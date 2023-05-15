@@ -17,7 +17,7 @@ function LoginPage(props) {
 
         props.callServer(request).then(response => {
             if (response.ok) {
-                setUser(username); // maybe pass response body instead?
+                setUser(username);
                 setLoggedIn(true);
             } else {
                 setLoggedIn(false);
@@ -33,16 +33,19 @@ function LoginPage(props) {
 
     }
 
-
     return (
         <div className={styles.loginpage}>
             <div className={styles.loginform}>
                 <h1>Welcome to tiktak!</h1>
-
                 <div className={styles.userfocus}>
                     <p>Log in to start playing.</p>
                     <form onSubmit={e => handleLoginAttempt(e, textInput, props.setLoggedIn, props.setUser)}>
-                        <input type="text" value={textInput} onChange={e => setTextInput(e.target.value)} className={styles.inputfield} />
+                        <input
+                            type="text"
+                            value={textInput}
+                            onChange={e => setTextInput(e.target.value)}
+                            className={styles.inputfield}
+                        />
                         <button className={styles.loginbutton}>Login</button>
                     </form>
                 </div>

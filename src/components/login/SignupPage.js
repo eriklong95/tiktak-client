@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./signuppage.module.css"
 
 function SignupPage(props) {
     const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ function SignupPage(props) {
         })).then(response => {
             if (response.ok) {
                 setStatus('success');
-            } else if (response.status === 403){
+            } else if (response.status === 403) {
                 setUsername('');
                 setStatus('failure');
                 setErrorMessage('Username already taken');
@@ -41,21 +42,32 @@ function SignupPage(props) {
         );
     } else {
         return (
-            <>
-                <p>Choose a username</p>
-                <form onSubmit={e => createUser(e, username)}>
-                    <input value={username} onChange={e => {setUsername(e.target.value); setStatus('signingUp');}} />
-                    <button>Sign up</button>
-                </form>
-                <p>Already on tiktak?<button onClick={props.onClickLogin}>Log in</button></p>
-                <dialog open={status === 'failure'}>
-                    <p>{errorMessage}</p>
-                    <button onClick={() => setStatus('signingUp')}>OK</button>
-                </dialog>
-            </>
+            <div className={styles.signuppage}>
+                <div className={styles.signupform}>
+                    <h1>Join tiktak!</h1>
+                    <div className={styles.userfocus}>
+                        <p>Choose a username</p>
+                        <form onSubmit={e => createUser(e, username)}>
+                            <input
+                                value={username}
+                                onChange={e => { setUsername(e.target.value); setStatus('signingUp'); }}
+                                className={styles.inputfield}
+                            />
+                            <button className={styles.signupbutton}>Sign up</button>
+                        </form>
+                    </div>
+                    <dialog open={status === 'failure'}>
+                        <p>{errorMessage}</p>
+                        <button onClick={() => setStatus('signingUp')}>OK</button>
+                    </dialog>
+                </div>
+                <div className={styles.loginlink}>
+                    <label>Already on tiktak?</label>
+                    <button onClick={props.onClickLogin} className={styles.gotologinbutton}>Log in</button>
+                </div>
+            </div>
         );
     }
-
 }
 
 export default SignupPage;
