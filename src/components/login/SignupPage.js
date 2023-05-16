@@ -13,7 +13,7 @@ function SignupPage(props) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: name
+            body: JSON.stringify(name)
         })).then(response => {
             if (response.ok) {
                 setStatus('success');
