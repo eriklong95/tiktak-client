@@ -9,3 +9,6 @@ Clone the project, then `cd` to the project's root directory. Then run the comma
 npm start
 ```
 The app should now be running on `http://localhost:3000`.
+
+## tiktak server
+The code for the tiktak server can be found here: https://github.com/eriklong95/tiktak.
