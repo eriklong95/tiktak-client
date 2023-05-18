@@ -13,7 +13,11 @@ function CreateGameDialog(props) {
         const request = new Request(props.host + '/api/games', {
             method: 'POST',
             body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
+        console.log(request)
         props.callServer(request).then(response => {
             if (response.ok) {
                 props.setInfoMessage('A new game was successfully created.')
