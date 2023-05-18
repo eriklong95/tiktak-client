@@ -10,8 +10,10 @@ function GameInfo(props) {
     }
 
     const userIsA = props.game.playerA === props.user;
-    const opponentUsername = userIsA ? props.game.playerB : props.game.playerB;
+    const opponentUsername = userIsA ? props.game.playerB : props.game.playerA;
     const myTurn = true;
+
+    console.log(userIsA);
 
     return (
         <section className={styles.gameinfo}>
