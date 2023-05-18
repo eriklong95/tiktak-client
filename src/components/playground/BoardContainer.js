@@ -28,7 +28,7 @@ function BoardContainer(props) {
         });
     }
 
-    if (game !== null) {
+    if (props.game !== null) {
         return <Board moves={props.game.moves} makeMove={makeMove} />
     } else {
         return <p>Failed to load game.</p>
