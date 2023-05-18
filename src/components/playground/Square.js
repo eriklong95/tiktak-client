@@ -1,14 +1,10 @@
 import styles from "./square.module.css";
 
 function Square(props) {
-    function move() {
-        props.makeMove(props.x, props.y);
-    }
-
-    const occupier = props.getOccupier(props.x, props.y)
+    const occupier = props.occupier;
 
     return (
-        <button className={styles.square} onClick={move}>
+        <button className={styles.square} onClick={props.makeMove}>
             {occupier}
         </button>
     );

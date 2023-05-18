@@ -4,7 +4,7 @@ function BoardContainer(props) {
 
     function makeMove(x, y) {
         const userIsA = props.game.playerA === props.user;
-        const myTurn = (userIsA && props.game.gameState.turn === 'A') || (!userIsA && props.game.gameState.turn === 'B');
+        const myTurn = true;
 
         if (!myTurn) {
             alert('It is not your turn.')
@@ -15,7 +15,7 @@ function BoardContainer(props) {
 
         const request = new Request(`${props.host}/api/games/${props.game.id}/moves`, {
             method: 'POST',
-            body: `{"x": ${x}, "y": ${y}, "occupier": "${myRole}"}`
+            body: JSON.stringify({ x: x, y: y, occupier: myRole })
         });
         props.callServer(request).then(response => {
             if (response.ok) {
@@ -28,13 +28,8 @@ function BoardContainer(props) {
         });
     }
 
-    function validGame(game) {
-        return game !== null && game.gameState !== undefined;
-    }
-
-
-    if (validGame(props.game)) {
-        return <Board moves={props.game.gameState.moves} makeMove={makeMove} />
+    if (game !== null) {
+        return <Board moves={props.game.moves} makeMove={makeMove} />
     } else {
         return <p>Failed to load game.</p>
     }

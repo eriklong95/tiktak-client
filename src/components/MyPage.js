@@ -11,8 +11,8 @@ function MyPage(props) {
     if (userMode === 'browsing') {
         return (
             <div className={styles.mypage}>
-                <MyData user={props.user} />
-                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} callServer={props.callServer} host={props.host} />
+                <MyData username={props.user} host={props.host} callServer={props.callServer}/>
+                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} host={props.host} callServer={props.callServer} />
                 <button onClick={props.logout} className={styles.logoutbutton}>Log out</button>
             </div>
         );
