@@ -15,6 +15,8 @@ function LoginPage(props) {
             }
         });
 
+        console.log('from handleLoginAttempt: ' + request.url);
+
         props.callServer(request).then(response => {
             if (response.ok) {
                 setUser(username);
