@@ -4,7 +4,7 @@ import GameInfo from "./GameInfo";
 import styles from "./playground.module.css";
 
 function Playground(props) {
-    const game = useData(`${props.host}/api/games/${props.gameId}`, props.callServer);
+    const game = useData(`${props.host}/games/${props.gameId}`, props.callServer);
 
     return (
         <div className={styles.playground}>

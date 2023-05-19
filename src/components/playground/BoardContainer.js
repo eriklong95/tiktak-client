@@ -13,7 +13,7 @@ function BoardContainer(props) {
 
         const myRole = userIsA ? 'A' : 'B';
 
-        const request = new Request(`${props.host}/api/games/${props.game.id}/moves`, {
+        const request = new Request(`${props.host}/games/${props.game.id}/moves`, {
             method: 'POST',
             body: JSON.stringify({ x: x, y: y, occupier: myRole })
         });

@@ -7,7 +7,7 @@ const LOGIN_STUB_RESPONSE = {
     id: nanoid(),
     name: 'login',
     onRequest: {
-        url: '/api/users/demouser',
+        url: '/users/demouser',
         method: 'GET',
         body: ''
     },
@@ -21,7 +21,7 @@ const CREATE_USER_STUB_RESPONSE = {
     id: nanoid(),
     name: "create user",
     onRequest: {
-        url: '/api/users',
+        url: '/users',
         method: 'POST',
         body: '"myUsername"'
     },
@@ -35,7 +35,7 @@ const GAMES_STUB_RESPONSE = {
     id: nanoid(),
     name: "get game ids",
     onRequest: {
-        url: '/api/games',
+        url: '/games',
         method: 'GET'
     },
     thenRespond: {
@@ -48,12 +48,12 @@ const GAME_INFO_STUB_RESPONSE = {
     id: nanoid(),
     name: "get game info 1",
     onRequest: {
-        url: '/api/games/a8sfd6sd8afd8s',
+        url: '/games/a8sfd6sd8afd8s',
         method: 'GET'
     },
     thenRespond: {
         status: 200,
-        body: '{"playerA": "demouser", "playerB": "stranger", "status": "ongoing", "gameState": {"turn": "B", "moves": []}}'
+        body: '{"playerA": "demouser", "playerB": "stranger"}'
     }
 }
 
@@ -61,7 +61,7 @@ const OTHER_GAME_INFO_STUB_RESPONSE = {
     id: nanoid(),
     name: "get game info 2",
     onRequest: {
-        url: '/api/games/asgd9agd89sgd',
+        url: '/games/asgd9agd89sgd',
         method: 'GET'
     },
     thenRespond: {

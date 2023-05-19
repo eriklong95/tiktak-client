@@ -5,7 +5,7 @@ import styles from './mygames.module.css';
 
 
 function MyGames(props) {
-    const gameIds = useData(`${props.host}/api/games?username=${props.user}`, props.callServer);
+    const gameIds = useData(`${props.host}/games?username=${props.user}`, props.callServer);
 
     function openGame(id) {
         props.setActiveGameId(id);

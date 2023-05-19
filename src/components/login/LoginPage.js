@@ -8,7 +8,7 @@ function LoginPage(props) {
 
     async function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
-        const request = new Request(`${props.host}/api/users/${username}`, {
+        const request = new Request(`${props.host}/users/${username}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

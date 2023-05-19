@@ -2,7 +2,7 @@ import useData from "../../hooks/useData";
 import styles from "./gamelistitem.module.css";
 
 function GameListItem(props) {
-    const game = useData(`${props.host}/api/games/${props.gameId}`, props.callServer);
+    const game = useData(`${props.host}/games/${props.gameId}`, props.callServer);
 
     function handlePlay() {
         props.openGame();

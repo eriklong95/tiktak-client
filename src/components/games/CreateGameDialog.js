@@ -10,7 +10,7 @@ function CreateGameDialog(props) {
             challenger: props.user,
             opponent: opponent,
         }
-        const request = new Request(props.host + '/api/games', {
+        const request = new Request(props.host + '/games', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {

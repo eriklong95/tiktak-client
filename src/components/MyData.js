@@ -2,7 +2,7 @@ import styles from "./mydata.module.css";
 import useData from "../hooks/useData";
 
 function MyData(props) {
-    const userData = useData(`${props.host}/api/users/${props.username}`, props.callServer);
+    const userData = useData(`${props.host}/users/${props.username}`, props.callServer);
 
     return (
         <div className={styles.userdatapanel}>
