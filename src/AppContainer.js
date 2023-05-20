@@ -84,7 +84,9 @@ function AppContainer() {
     const [withStubs, setWithStubs] = useState(false);
 
     function matches(request, stubResponse) {
-        return host + stubResponse.onRequest.url === request.url;
+        const urlMatches = host + stubResponse.onRequest.url === request.url;
+        const httpMethodMatches = request.method === stubResponse.onRequest.method;
+        return urlMatches && httpMethodMatches;
     }
 
     function callServer(request) {
