@@ -70,6 +70,19 @@ const OTHER_GAME_INFO_STUB_RESPONSE = {
     }
 }
 
+const FRESH_GAMES_STUB_RESPONSE = {
+    id: nanoid(),
+    name: "get fresh games",
+    onRequest: {
+        url: "/games?username=demouser",
+        method: "GET"
+    },
+    thenRespond: {
+        status: 200,
+        body: '["asgd9agd89sgd", "a8sfd6sd8afd8s"]'
+    }
+}
+
 function AppContainer() {
     const [stubResponses, setStubResponses] = useState(
         [
@@ -77,7 +90,8 @@ function AppContainer() {
             CREATE_USER_STUB_RESPONSE,
             GAMES_STUB_RESPONSE,
             GAME_INFO_STUB_RESPONSE,
-            OTHER_GAME_INFO_STUB_RESPONSE
+            OTHER_GAME_INFO_STUB_RESPONSE,
+            FRESH_GAMES_STUB_RESPONSE
         ]
     );
     const [host, setHost] = useState('http://localhost:5000');

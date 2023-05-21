@@ -11,7 +11,7 @@ function LoginPage(props) {
         const request = new Request(`${props.host}/users/${username}`, {
             method: 'GET',
             headers: {
-                'Accept': 'application/json',
+                'Accept': 'application/json'
             }
         });
 
