@@ -6,19 +6,17 @@ function CreateGameDialog(props) {
     function handleConfirm(event) {
         event.preventDefault();
         props.setDialogOpen(false);
-        const body = {
-            challenger: props.user,
-            opponent: opponent,
-        }
-        const request = new Request(props.host + '/games', {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: {
-                'Content-Type': 'application/json'
+
+        props.callServer(new Request(
+            props.host + '/games',
+            {
+                method: 'POST',
+                body: JSON.stringify({ challenger: props.user, opponent: opponent }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             }
-        });
-        console.log(request)
-        props.callServer(request).then(response => {
+        )).then(response => {
             if (response.ok) {
                 props.setInfoMessage('A new game was successfully created.')
             } else {
