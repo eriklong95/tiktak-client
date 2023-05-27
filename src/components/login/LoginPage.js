@@ -8,14 +8,12 @@ function LoginPage(props) {
 
     async function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
-        const request = new Request(`${props.host}/users/${username}`, {
+        const request = new Request(`/users/${username}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
             }
         });
-
-        console.log('from handleLoginAttempt: ' + request.url);
 
         props.callServer(request).then(response => {
             if (response.ok) {

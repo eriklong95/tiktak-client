@@ -11,15 +11,15 @@ function MyPage(props) {
     if (userMode === 'browsing') {
         return (
             <div className={styles.mypage}>
-                <MyData username={props.user} host={props.host} callServer={props.callServer}/>
-                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} host={props.host} callServer={props.callServer} />
+                <MyData username={props.user} callServer={props.callServer}/>
+                <MyGames user={props.user} setUserMode={setUserMode} setActiveGameId={setActiveGameId} callServer={props.callServer} />
                 <button onClick={props.logout} className={styles.logoutbutton}>Log out</button>
             </div>
         );
     } else {
         return (
             <div className={styles.mypage}>
-                <Playground host={props.host} callServer={props.callServer} setUserMode={setUserMode} gameId={activeGameId} user={props.user} />
+                <Playground callServer={props.callServer} setUserMode={setUserMode} gameId={activeGameId} user={props.user} />
             </div>
         );
     }

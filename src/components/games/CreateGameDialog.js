@@ -8,7 +8,7 @@ function CreateGameDialog(props) {
         props.setDialogOpen(false);
 
         props.callServer(new Request(
-            props.host + '/games',
+            '/games',
             {
                 method: 'POST',
                 body: JSON.stringify({ challenger: props.user, opponent: opponent }),

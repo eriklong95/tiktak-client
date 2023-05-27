@@ -10,7 +10,7 @@ function MyGames(props) {
     function refreshGameList() {
         props.callServer(
             new Request(
-                `${props.host}/games?username=${props.user}`,
+                `/games?username=${props.user}`,
                 {
                     method: 'GET',
                     headers: {
@@ -38,7 +38,7 @@ function MyGames(props) {
             <ul>
                 {gameIds.map(i =>
                     <GameListItem gameId={i} key={i} callServer={props.callServer}
-                        host={props.host} setUserMode={props.setUserMode}
+                        setUserMode={props.setUserMode}
                         openGame={() => openGame(i)}
                     />
                 )}

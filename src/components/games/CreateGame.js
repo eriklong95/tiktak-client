@@ -16,7 +16,6 @@ function CreateGame(props) {
                 setDialogOpen={setDialogOpen}
                 user={props.user}
                 callServer={props.callServer}
-                host={props.host}
                 setInfoOpen={setInfoOpen}
                 setInfoMessage={setInfoMessage}
             />

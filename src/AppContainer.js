@@ -1,6 +1,6 @@
 import { useState } from "react";
 import App from "./App";
-import ServerConnectionController from "./components/remote/ServerConnectionController";
+import StubResponsesConfig from "./components/stubbing/StubResponsesConfig";
 import { nanoid } from "nanoid";
 
 const LOGIN_STUB_RESPONSE = {
@@ -94,11 +94,10 @@ function AppContainer() {
             FRESH_GAMES_STUB_RESPONSE
         ]
     );
-    const [host, setHost] = useState('http://localhost:5000');
     const [withStubs, setWithStubs] = useState(false);
 
     function matches(request, stubResponse) {
-        const urlMatches = host + stubResponse.onRequest.url === request.url;
+        const urlMatches = stubResponse.onRequest.url === request.url;
         const httpMethodMatches = request.method === stubResponse.onRequest.method;
         return urlMatches && httpMethodMatches;
     }
@@ -124,15 +123,10 @@ function AppContainer() {
 
     return (
         <>
-            <App callServer={callServer} host={host} />
-            <ServerConnectionController
-                withStubs={withStubs}
-                host={host}
-                setHost={setHost}
-                setWithStubs={setWithStubs}
-                stubResponses={stubResponses}
-                setStubResponses={setStubResponses}
-            />
+            <App callServer={callServer} />
+            <label htmlFor="stub-responses">Stub server responses</label>
+            <input id="stub-responses" checked={withStubs} type="checkbox" onChange={e => setWithStubs(e.target.checked)} />
+            <StubResponsesConfig stubResponses={stubResponses} setStubResponses={setStubResponses} />
         </>
     )
 }
