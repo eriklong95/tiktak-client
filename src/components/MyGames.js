@@ -1,5 +1,5 @@
 import CreateGame from './games/CreateGame';
-import GameListItem from './games/GameListItem';
+import GameList from './games/GameList';
 import styles from './mygames.module.css';
 import { useState } from 'react';
 
@@ -34,16 +34,9 @@ function MyGames(props) {
     return (
         <div className={styles.mygamespanel}>
             <h2>My games</h2>
-            <button onClick={refreshGameList}>Refresh</button>
-            <ul>
-                {gameIds.map(i =>
-                    <GameListItem gameId={i} key={i} callServer={props.callServer}
-                        setUserMode={props.setUserMode}
-                        openGame={() => openGame(i)}
-                    />
-                )}
-            </ul>
+            <GameList gameIds={gameIds} refreshGameList={refreshGameList} openGame={openGame} callServer={props.callServer} setUserMode={props.setUserMode} />
             <CreateGame user={props.user} callServer={props.callServer} host={props.host} refreshGameList={refreshGameList} />
+            <button onClick={refreshGameList}>Refresh list</button>
         </div>
     );
 }

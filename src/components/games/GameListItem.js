@@ -30,7 +30,7 @@ function GameListItem(props) {
         return (
             <li>
                 <label>
-                    Failed to load game with ID {props.gameId}.
+                    Loading game with ID {props.gameId} ...
                 </label>
             </li>
         )

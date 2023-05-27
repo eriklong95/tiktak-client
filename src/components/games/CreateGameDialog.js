@@ -18,7 +18,7 @@ function CreateGameDialog(props) {
             }
         )).then(response => {
             if (response.ok) {
-                props.setInfoMessage('A new game was successfully created.')
+                props.setInfoMessage('A new game was successfully created.');
             } else {
                 props.setInfoMessage('Failed to create new game.')
             }

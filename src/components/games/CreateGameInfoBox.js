@@ -1,10 +1,15 @@
 function CreateGameInfoBox(props) {
+    function onOk() {
+        props.setOpen(false);
+        props.refreshGameList();
+    }
+
     return (
         <dialog open={props.open}>
             <section>
                 {props.message}
             </section>
-            <button onClick={() => props.setOpen(false)}>OK</button>
+            <button onClick={onOk}>OK</button>
         </dialog>
     );
 }

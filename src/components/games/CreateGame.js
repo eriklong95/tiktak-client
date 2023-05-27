@@ -19,7 +19,7 @@ function CreateGame(props) {
                 setInfoOpen={setInfoOpen}
                 setInfoMessage={setInfoMessage}
             />
-            <CreateGameInfoBox open={infoOpen} message={infoMessage} setOpen={setInfoOpen} />
+            <CreateGameInfoBox open={infoOpen} message={infoMessage} setOpen={setInfoOpen} refreshGameList={props.refreshGameList} />
         </>
     );
 }
