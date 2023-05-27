@@ -1,8 +1,6 @@
 import styles from "./gameinfo.module.css";
 
 function GameInfo(props) {
-    props.refreshGame();
-    
     if (props.game === null) {
         return (
             <section className={styles.gameinfo}>

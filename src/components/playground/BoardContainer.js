@@ -1,7 +1,6 @@
 import Board from "./Board";
 
 function BoardContainer(props) {
-    props.refreshGame();
 
     if (props.game === null) {
         return <p>Failed to load game.</p>

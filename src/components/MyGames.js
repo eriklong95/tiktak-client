@@ -34,7 +34,7 @@ function MyGames(props) {
     return (
         <div className={styles.mygamespanel}>
             <h2>My games</h2>
-            <GameList gameIds={gameIds} refreshGameList={refreshGameList} openGame={openGame} callServer={props.callServer} setUserMode={props.setUserMode} />
+            <GameList gameIds={gameIds} openGame={openGame} callServer={props.callServer} setUserMode={props.setUserMode} />
             <CreateGame user={props.user} callServer={props.callServer} host={props.host} refreshGameList={refreshGameList} />
             <button onClick={refreshGameList}>Refresh list</button>
         </div>

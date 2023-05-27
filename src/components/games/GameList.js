@@ -1,7 +1,6 @@
 import GameListItem from "./GameListItem";
 
 function GameList(props) {
-    props.refreshGameList();
     return (
         <ul>
             {props.gameIds.map(i =>
