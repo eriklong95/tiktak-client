@@ -10,7 +10,7 @@ function BoardContainer(props) {
     function makeMove(x, y) {
         console.log('Making move...')
         const userIsA = props.game.playerA === props.user;
-        const myTurn = true;
+        const myTurn = (userIsA && props.turn === 'A') || (!userIsA && props.turn === 'B')
 
         if (!myTurn) {
             alert('It is not your turn.')

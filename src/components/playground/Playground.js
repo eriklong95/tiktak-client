@@ -5,6 +5,7 @@ import styles from "./playground.module.css";
 
 function Playground(props) {
     const [game, setGame] = useState(null);
+    const [turn, setTurn] = useState(false);
 
     function refreshGame() {
         props.callServer(new Request(
@@ -16,14 +17,25 @@ function Playground(props) {
         }).catch(error => {
             console.log(error);
         });
+
+        props.callServer(new Request(
+            `/games/${props.gameId}/turn`
+        )).then(response => {
+            return response.json();
+        }).then(data => {
+            setTurn(data);
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     return (
         <div className={styles.playground}>
             <p>Game ID: {props.gameId}</p>
-            <GameInfo game={game} refreshGame={refreshGame} user={props.user}/>
-            <BoardContainer game={game} refreshGame={refreshGame} user={props.user} callServer={props.callServer} />
+            <GameInfo game={game} turn={turn} refreshGame={refreshGame} user={props.user}/>
+            <BoardContainer game={game} turn={turn} refreshGame={refreshGame} user={props.user} callServer={props.callServer} />
             <button onClick={() => props.setUserMode('browsing')} className={styles.exitbutton}>Return to my page</button>
+            <button onClick={refreshGame}>Refresh</button>
         </div>
     );
 }
