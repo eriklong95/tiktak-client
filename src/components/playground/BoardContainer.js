@@ -1,8 +1,14 @@
 import Board from "./Board";
 
 function BoardContainer(props) {
+    props.refreshGame();
+
+    if (props.game === null) {
+        return <p>Failed to load game.</p>
+    }
 
     function makeMove(x, y) {
+        console.log('Making move...')
         const userIsA = props.game.playerA === props.user;
         const myTurn = true;
 
@@ -13,13 +19,25 @@ function BoardContainer(props) {
 
         const myRole = userIsA ? 'A' : 'B';
 
-        const request = new Request(`/games/${props.game.id}/moves`, {
-            method: 'POST',
-            body: JSON.stringify({ x: x, y: y, occupier: myRole })
-        });
-        props.callServer(request).then(response => {
+        props.callServer(new Request(
+            `/games/${props.game.id}/moves`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        x: x,
+                        y: y,
+                        occupier: myRole
+                    }
+                )
+            }
+        )).then(response => {
             if (response.ok) {
-                console.log('Successfully made move!')
+                console.log('Successfully made move!');
+                props.refreshGame();
             } else {
                 console.log('Making move failed')
             }
@@ -28,11 +46,7 @@ function BoardContainer(props) {
         });
     }
 
-    if (props.game !== null) {
-        return <Board moves={props.game.moves} makeMove={makeMove} />
-    } else {
-        return <p>Failed to load game.</p>
-    }
+    return <Board moves={props.game.moves} makeMove={makeMove} />
 }
 
 export default BoardContainer;

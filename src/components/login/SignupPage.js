@@ -8,13 +8,16 @@ function SignupPage(props) {
 
     function createUser(event, name) {
         event.preventDefault();
-        props.callServer(new Request(`/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(name)
-        })).then(response => {
+        props.callServer(new Request(
+            `/users`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(name)
+            }
+        )).then(response => {
             if (response.ok) {
                 setStatus('success');
             } else if (response.status === 403) {
