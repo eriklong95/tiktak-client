@@ -4,7 +4,7 @@ function GameList(props) {
     return (
         <ul>
             {props.gameIds.map(i =>
-                <GameListItem gameId={i} key={i} callServer={props.callServer}
+                <GameListItem gameId={i} key={i}
                     setUserMode={props.setUserMode}
                     openGame={() => props.openGame(i)}
                 />

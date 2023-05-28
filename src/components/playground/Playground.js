@@ -8,7 +8,7 @@ function Playground(props) {
     const [turn, setTurn] = useState(false);
 
     function refreshGame() {
-        props.callServer(new Request(
+        fetch(new Request(
             `/games/${props.gameId}`
         )).then(response => {
             return response.json();
@@ -18,7 +18,7 @@ function Playground(props) {
             console.log(error);
         });
 
-        props.callServer(new Request(
+        fetch(new Request(
             `/games/${props.gameId}/turn`
         )).then(response => {
             return response.json();
@@ -33,7 +33,7 @@ function Playground(props) {
         <div className={styles.playground}>
             <p>Game ID: {props.gameId}</p>
             <GameInfo game={game} turn={turn} refreshGame={refreshGame} user={props.user}/>
-            <BoardContainer game={game} turn={turn} refreshGame={refreshGame} user={props.user} callServer={props.callServer} />
+            <BoardContainer game={game} turn={turn} refreshGame={refreshGame} user={props.user} />
             <button onClick={() => props.setUserMode('browsing')} className={styles.exitbutton}>Return to my page</button>
             <button onClick={refreshGame}>Refresh</button>
         </div>

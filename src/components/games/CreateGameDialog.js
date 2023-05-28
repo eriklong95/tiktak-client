@@ -7,7 +7,7 @@ function CreateGameDialog(props) {
         event.preventDefault();
         props.setDialogOpen(false);
 
-        props.callServer(new Request(
+        fetch(new Request(
             '/games',
             {
                 method: 'POST',

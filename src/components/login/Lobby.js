@@ -9,12 +9,12 @@ function Lobby(props) {
     if (status === 'loggingIn') {
         return (
             <div className={styles.lobby}>
-                <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} callServer={props.callServer} />
+                <LoginPage setLoggedIn={props.setLoggedIn} onClickSignup={() => setStatus('signingUp')} setUser={props.setUser} />
             </div>
         );
     } else if (status === 'signingUp') {
         return (
-            <SignupPage onClickLogin={() => setStatus('loggingIn')} callServer={props.callServer} />
+            <SignupPage onClickLogin={() => setStatus('loggingIn')} />
         );
     }
 }

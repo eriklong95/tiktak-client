@@ -8,14 +8,16 @@ function LoginPage(props) {
 
     async function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
-        const request = new Request(`/users/${username}`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
 
-        props.callServer(request).then(response => {
+        fetch(new Request(
+            `/users/${username}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }
+        )).then(response => {
             if (response.ok) {
                 setUser(username);
                 setLoggedIn(true);

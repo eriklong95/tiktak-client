@@ -8,7 +8,7 @@ function SignupPage(props) {
 
     function createUser(event, name) {
         event.preventDefault();
-        props.callServer(new Request(
+        fetch(new Request(
             `/users`,
             {
                 method: 'POST',

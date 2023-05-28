@@ -18,7 +18,7 @@ function BoardContainer(props) {
 
         const myRole = userIsA ? 'A' : 'B';
 
-        props.callServer(new Request(
+        fetch(new Request(
             `/games/${props.game.id}/moves`,
             {
                 method: 'POST',
