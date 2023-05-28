@@ -1,8 +1,10 @@
+import { useState } from "react";
 import useData from "../../hooks/useData";
 import styles from "./gamelistitem.module.css";
 
 function GameListItem(props) {
     const game = useData(`/games/${props.gameId}`, props.callServer);
+    const winner = useData(`/games/${props.gameId}/winner`, props.callServer);
 
     function handlePlay() {
         props.openGame();
@@ -25,7 +27,7 @@ function GameListItem(props) {
                 </div>
                 <div className={styles.field}>
                     <label>Winner</label>
-                    <input type="text" value={'undecided'} readOnly className={styles.valuebox}/>
+                    <input type="text" value={winner} readOnly className={styles.valuebox}/>
                 </div>
                 <button onClick={handlePlay} className={styles.playbutton}>Play</button>
             </li>
