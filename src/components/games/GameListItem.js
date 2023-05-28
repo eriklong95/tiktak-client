@@ -23,6 +23,10 @@ function GameListItem(props) {
                     <label>Player B</label>
                     <input type="text" value={game.playerB} readOnly className={styles.valuebox}/>
                 </div>
+                <div className={styles.field}>
+                    <label>Winner</label>
+                    <input type="text" value={'undecided'} readOnly className={styles.valuebox}/>
+                </div>
                 <button onClick={handlePlay} className={styles.playbutton}>Play</button>
             </li>
         );
