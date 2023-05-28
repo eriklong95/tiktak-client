@@ -1,10 +1,9 @@
-import { useState } from "react";
 import useData from "../../hooks/useData";
 import styles from "./gamelistitem.module.css";
 
 function GameListItem(props) {
-    const game = useData(`/games/${props.gameId}`, props.callServer);
-    const winner = useData(`/games/${props.gameId}/winner`, props.callServer);
+    const game = useData(`/games/${props.gameId}`);
+    const winner = useData(`/games/${props.gameId}/winner`);
 
     function handlePlay() {
         props.openGame();
