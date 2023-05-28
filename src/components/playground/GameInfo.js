@@ -4,7 +4,7 @@ function GameInfo(props) {
     if (props.game === null) {
         return (
             <section className={styles.gameinfo}>
-                <p>Failed to load game details</p>
+                <p>Press 'Refresh' to load game details</p>
             </section>
         )
     }

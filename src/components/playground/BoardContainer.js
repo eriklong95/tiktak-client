@@ -3,7 +3,7 @@ import Board from "./Board";
 function BoardContainer(props) {
 
     if (props.game === null) {
-        return <p>Failed to load game.</p>
+        return <p>Press 'Refresh' to load game.</p>
     }
 
     function makeMove(x, y) {
