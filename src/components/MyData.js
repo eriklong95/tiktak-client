@@ -2,7 +2,9 @@ import styles from "./mydata.module.css";
 import useData from "../hooks/useData";
 
 function MyData(props) {
-    const userData = useData(`/users/${props.username}`);
+    // The useData hook GETs the URL passed to it.
+    // TODO: Insert the appropriate URL.
+    const userData = useData(`url`);
 
     return (
         <div className={styles.userdatapanel}>
