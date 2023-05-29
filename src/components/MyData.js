@@ -3,8 +3,7 @@ import useData from "../hooks/useData";
 
 function MyData(props) {
     // The useData hook GETs the URL passed to it.
-    // TODO: Insert the appropriate URL.
-    const userData = useData(`url`);
+    const userData = useData(`url`); // TODO: insert the appropriate URL
 
     return (
         <div className={styles.userdatapanel}>

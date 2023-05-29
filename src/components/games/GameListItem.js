@@ -2,8 +2,11 @@ import useData from "../../hooks/useData";
 import styles from "./gamelistitem.module.css";
 
 function GameListItem(props) {
-    const game = useData(`/games/${props.gameId}`);
-    const winner = useData(`/games/${props.gameId}/winner`);
+    // The ID of the game is available as props.gameId.
+
+    // The useData hook GETs the URL passed to it.
+    const game = useData('url1'); // TODO: insert the appropriate URL
+    const winner = useData('url2'); // TODO: insert the appropriate URL
 
     function handlePlay() {
         props.openGame();
