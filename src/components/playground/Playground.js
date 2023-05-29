@@ -6,11 +6,14 @@ import styles from "./playground.module.css";
 function Playground(props) {
     const [game, setGame] = useState(null);
     const [turn, setTurn] = useState(false);
-
+    
     function refreshGame() {
-        fetch(new Request(
-            `/games/${props.gameId}`
-        )).then(response => {
+        // The ID of the game is available as props.gameId
+
+        // This function should update the game data ...
+        const gameInfoRequest = new Request('url1'); // TODO: insert the appropriate URL
+
+        fetch(gameInfoRequest).then(response => {
             return response.json();
         }).then(data => {
             setGame(data);
@@ -18,9 +21,9 @@ function Playground(props) {
             console.log(error);
         });
 
-        fetch(new Request(
-            `/games/${props.gameId}/turn`
-        )).then(response => {
+        // ... and the information about whose turn it is.
+        const whoseTurnRequest = new Request('url2'); // TODO: insert the appropriate URL
+        fetch(whoseTurnRequest).then(response => {
             return response.json();
         }).then(data => {
             setTurn(data);
