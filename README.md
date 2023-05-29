@@ -18,7 +18,9 @@ npm start
 The app should now be running on `http://localhost:3000`.
 
 ## tiktak server
-The code for the tiktak server can be found here: https://github.com/eriklong95/tiktak.
+The code for the tiktak server can be found here: https://github.com/eriklong95/tiktak. The app
+relies on the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 
+for communication with the server.
 
 ## Proxy backend
 The app is set up in a way such that HTTP requests will hit a proxy server running on the same host

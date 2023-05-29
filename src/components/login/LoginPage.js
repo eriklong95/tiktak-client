@@ -9,7 +9,7 @@ function LoginPage(props) {
     async function handleLoginAttempt(event, username, setLoggedIn, setUser) {
         event.preventDefault();
 
-        fetch(new Request(
+        const request = new Request(
             `/users/${username}`,
             {
                 method: 'GET',
@@ -17,7 +17,9 @@ function LoginPage(props) {
                     'Accept': 'application/json'
                 }
             }
-        )).then(response => {
+        );
+
+        fetch(request).then(response => {
             if (response.ok) {
                 setUser(username);
                 setLoggedIn(true);

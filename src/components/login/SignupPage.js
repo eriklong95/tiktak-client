@@ -8,16 +8,10 @@ function SignupPage(props) {
 
     function createUser(event, name) {
         event.preventDefault();
-        fetch(new Request(
-            `/users`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(name)
-            }
-        )).then(response => {
+
+        const request = new Request(`url`, {}); // TODO: replace this with the appropriate request
+
+        fetch(request).then(response => {
             if (response.ok) {
                 setStatus('success');
             } else if (response.status === 403) {
