@@ -8,15 +8,12 @@ function MyGames(props) {
     const [gameIds, setGameIds] = useState([]);
 
     function refreshGameList() {
-        fetch(new Request(
-            `/games?username=${props.user}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }
-        )).then(response => {
+        // This function should update list of IDs 
+        // of games in which the user participates.
+
+        const request = new Request('url', {}); // TODO: replace with the appropriate request
+
+        fetch(request).then(response => {
             return response.json();
         }).then(data => {
             setGameIds(data);
