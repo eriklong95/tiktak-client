@@ -11,7 +11,14 @@ function MyGames(props) {
         // This function should update list of IDs 
         // of games in which the user participates.
 
-        const request = new Request('url', {}); // TODO: replace with the appropriate request
+        const request = new Request(
+            `/games?username=${props.user}`,
+        {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        }); // DONE1: replace with the appropriate request
 
         fetch(request).then(response => {
             return response.json();

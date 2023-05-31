@@ -11,7 +11,7 @@ function Playground(props) {
         // The ID of the game is available as props.gameId
 
         // This function should update the game data ...
-        const gameInfoRequest = new Request('url1'); // TODO: insert the appropriate URL
+        const gameInfoRequest = new Request(`/games/${props.gameId}`); // DONE: insert the appropriate URL
 
         fetch(gameInfoRequest).then(response => {
             return response.json();
@@ -22,7 +22,7 @@ function Playground(props) {
         });
 
         // ... and the information about whose turn it is.
-        const whoseTurnRequest = new Request('url2'); // TODO: insert the appropriate URL
+        const whoseTurnRequest = new Request(`/games/${props.gameId}/turn`); // DONE: insert the appropriate URL
         fetch(whoseTurnRequest).then(response => {
             return response.json();
         }).then(data => {

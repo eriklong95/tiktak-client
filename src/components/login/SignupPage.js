@@ -9,7 +9,15 @@ function SignupPage(props) {
     function createUser(event, name) {
         event.preventDefault();
 
-        const request = new Request(`url`, {}); // TODO: replace this with the appropriate request
+        const request = new Request(`/users`, 
+        {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: '"' + name + '"',
+        }); //DONE1
 
         fetch(request).then(response => {
             if (response.ok) {
@@ -18,10 +26,14 @@ function SignupPage(props) {
                 setUsername('');
                 setStatus('failure');
                 setErrorMessage('Username already taken');
+            } else if (response.status === 500) {
+                setUsername('');
+                setStatus('failure');
+                setErrorMessage('Unimplemented');
             } else {
                 setUsername('');
                 setStatus('failure');
-                setErrorMessage('Unknown error');
+                setErrorMessage('Unknown error' + response.status);
             }
         }).catch(error => {
             console.log(error);

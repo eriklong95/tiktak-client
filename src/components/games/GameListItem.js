@@ -5,8 +5,8 @@ function GameListItem(props) {
     // The ID of the game is available as props.gameId.
 
     // The useData hook GETs the URL passed to it.
-    const game = useData('url1'); // TODO: insert the appropriate URL
-    const winner = useData('url2'); // TODO: insert the appropriate URL
+    const game = useData(`/games/${props.gameId}`); // DONE: insert the appropriate URL
+    const winner = useData(`/games/${props.gameId}/winner`); // DONE: insert the appropriate URL
 
     function handlePlay() {
         props.openGame();
